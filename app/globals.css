@@ -1,26 +1,117 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* app/globals.css */
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+body{
+  background-color: black;
+}
+/* Pulsing glow */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  50% {
+    transform: scale(1.4);
+    box-shadow: 0 0 25px currentColor;
+  }
+}
+/* Pulsing glow */
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 10px currentColor;
+  }
+
+  50% {
+    transform: scale(1.4);
+    box-shadow: 0 0 25px currentColor;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Circular motion with pause at starting point */
+@keyframes circle {
+
+  0%,
+  50% {
+    /* Pause at starting point for 5% of animation */
+    transform: rotate(0deg) translateX(200%) rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg) translateX(200%) rotate(-360deg);
+  }
+}
+
+/* Apply animations with staggered delays */
+.animate-circle1 {
+  animation: circle 2.5s linear infinite, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle2 {
+  animation: circle 2.5s linear infinite 0.15s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle3 {
+  animation: circle 2.5s linear infinite 0.3s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle4 {
+  animation: circle 2.5s linear infinite 0.45s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle5 {
+  animation: circle 2.5s linear infinite 0.6s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle6 {
+  animation: circle 2.5s linear infinite 0.75s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle7 {
+  animation: circle 2.5s linear infinite 0.9s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle8 {
+  animation: circle 2.5s linear infinite 1.05s, pulse 1.2s ease-in-out infinite;
+}
+.animate-circle9 {
+  animation: circle 2.5s linear infinite 1.15, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle10 {
+  animation: circle 2.5s linear infinite 1.30s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle11 {
+  animation: circle 2.5s linear infinite 1.45s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle12 {
+  animation: circle 2.5s linear infinite 1.60s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle13 {
+  animation: circle 2.5s linear infinite 1.75s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle14 {
+  animation: circle 2.5s linear infinite 1.90s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle15 {
+  animation: circle 2.5s linear infinite 2.05s, pulse 1.2s ease-in-out infinite;
+}
+
+.animate-circle16 {
+  animation: circle 2.5s linear infinite 2.15s, pulse 1.2s ease-in-out infinite;
 }

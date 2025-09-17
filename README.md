@@ -1,10 +1,11 @@
-🚀 Nestlink
+## 🚀 Nestlink
 
-Nestlink is an emerging technology organisation dedicated to delivering cutting-edge digital solutions and services to clients across various industries. Inspired by the model of global tech giants like Microsoft, Nestlink aims to build a robust ecosystem of applications, platforms, and services that empower individuals and businesses with modern, reliable, and scalable technology.
+Nestlink is an emerging technology organisation dedicated to delivering cutting-edge digital solutions and services to clients across various industries. Nestlink aims to build a robust ecosystem of applications, platforms, and services that empower individuals and businesses with modern, reliable, and scalable technology.
 
-Our mission is to provide tech-driven solutions that combine innovation, accessibility, and efficiency. Nestlink will focus on web applications, cloud services, AI-driven solutions, and client-centric platforms that can adapt to diverse use cases.
+## Our mission
 
-At its foundation, Nestlink begins with a Next.js-based platform that acts as the central hub for services, information, and client engagement. The architecture is designed to be modular and extensible, enabling the organisation to expand into new products (e.g., AI tools, SaaS platforms, enterprise dashboards) as it grows.
+To provide tech-driven solutions that combine innovation, accessibility, and efficiency.
+~ Nestlink will focus on web applications, cloud services, AI-driven solutions, and client-centric platforms that can adapt to diverse use cases.
 
 The development approach emphasizes modern web standards, security, performance, and scalability, ensuring that Nestlink evolves into a multi-faceted organisation capable of serving clients globally.
 

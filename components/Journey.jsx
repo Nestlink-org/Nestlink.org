@@ -1,5 +1,6 @@
 'use client';
 
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
@@ -7,15 +8,38 @@ const steps = [
     { year: '2018', title: 'Early Growth', desc: 'Expanded our team, onboarded our first clients, and refined workflows to deliver reliable, high-quality services.' },
     { year: '2019', title: 'Product Market Fit', desc: 'Launched our first flagship product, validated market demand, and strengthened our product strategy with user-centric insights.' },
     { year: '2021', title: 'Cloud Expansion', desc: 'Migrated client systems to scalable cloud infrastructure, improving reliability, performance, and security across services.' },
-    { year: '2023', title: 'AI Integration', desc: 'Introduced AI-driven solutions for automation and analytics, delivering smarter, faster, and more precise decision-making tools.' },
+    { year: '2023', title: 'AI Integration', desc: 'Introduces AI-driven solutions for automation and analytics, delivering smarter, faster, and more precise decision-making tools.' },
     { year: '2025', title: 'Global Scaling', desc: 'Expanded into multiple international markets, providing robust, secure, and innovative IT solutions worldwide.' },
 ];
 
 export default function Journey() {
     const itemVariants = {
-        hidden: { opacity: 0, y: 50, rotateX: -45 },
-        visible: { opacity: 1, y: 0, rotateX: 0 },
+        hidden: { opacity: 0, rotateY: 20, scale: 0.9 },
+        visible: { opacity: 1, rotateY: 0, scale: 1 },
     };
+
+    const titleRef = useRef();
+    const [isTitleInView, setIsTitleInView] = useState(false);
+
+    // Set up intersection observer for the title
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                setIsTitleInView(entry.isIntersecting);
+            },
+            { threshold: 0.5 }
+        );
+
+        if (titleRef.current) {
+            observer.observe(titleRef.current);
+        }
+
+        return () => {
+            if (titleRef.current) {
+                observer.unobserve(titleRef.current);
+            }
+        };
+    }, []);
 
     return (
         <section className="py-24 flex justify-center bg-gradient-to-b from-black via-purple-900/10 to-black relative overflow-hidden">
@@ -35,16 +59,20 @@ export default function Journey() {
             />
 
             <div className="w-full max-w-6xl px-6 relative z-10">
-                {/* Title */}
-                <motion.h2
-                    className="text-5xl md:text-7xl font-black text-white text-center mb-20 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500"
-                    initial={{ opacity: 0, y: -30, letterSpacing: '1rem' }}
-                    whileInView={{ opacity: 1, y: 0, letterSpacing: '0.05em' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: "easeOut" }}
-                >
-                    OUR JOURNEY
-                </motion.h2>
+                {/* Title with repeating animation */}
+                <div ref={titleRef}>
+                    <motion.h2
+                        className="text-5xl md:text-7xl font-black  text-center mb-20 tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500"
+                        initial={{ opacity: 0, y: -30, letterSpacing: '1rem' }}
+                        animate={isTitleInView ?
+                            { opacity: 1, y: 0, letterSpacing: '0.05em' } :
+                            { opacity: 0, y: -30, letterSpacing: '1rem' }
+                        }
+                        transition={{ duration: 1.2, ease: "easeOut" }}
+                    >
+                        OUR JOURNEY
+                    </motion.h2>
+                </div>
 
                 <div className="relative">
                     {/* Central animated line */}

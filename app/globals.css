@@ -1,23 +1,81 @@
 @import "tailwindcss";
 
-
-/* app/globals.css */
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities; */
-
-body{
-  background-color: black;
+/* Light mode background */
+body {
+  background: 
+    radial-gradient(
+      circle at 50% -20%,
+      #ffffff 0%,
+      #f0f0f0 80%,
+      rgba(59, 130, 246, 0.3) 90%,
+      #e5e7eb 100%
+    ),
+    #f9fafb; /* fallback light gray */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background 0.6s ease-in-out;
 }
+
+/* Dark mode background */
+.dark body {
+  background: 
+    radial-gradient(
+      circle at 50% -20%,
+      #7302fe 0%,
+      #000000 80%,
+      rgba(59, 130, 246, 0.6) 90%,
+      #000000 100%
+    ),
+    #000000; /* fallback black */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background 0.6s ease-in-out;
+}
+
+
+
+
+
+
+/* *****************************************general body smooth animation*************************************** */
+body {
+  transition: background 0.6s ease-in-out;
+}
+
+/* Support for dark mode body */
+.dark body {
+  transition: background 0.6s ease-in-out;
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+
+
+
+/* ************************************************************loading animation****************************************************** */
 /* Pulsing glow */
 @keyframes pulse {
-
   0%,
   100% {
     transform: scale(1);
     box-shadow: 0 0 10px currentColor;
   }
-
   50% {
     transform: scale(1.4);
     box-shadow: 0 0 25px currentColor;
@@ -25,19 +83,16 @@ body{
 }
 /* Pulsing glow */
 @keyframes pulse {
-
   0%,
   100% {
     transform: scale(1);
     box-shadow: 0 0 10px currentColor;
   }
-
   50% {
     transform: scale(1.4);
     box-shadow: 0 0 25px currentColor;
   }
 }
-
 /* Circular motion with pause at starting point */
 @keyframes circle {
 
@@ -83,35 +138,4 @@ body{
 
 .animate-circle8 {
   animation: circle 2.5s linear infinite 1.05s, pulse 1.2s ease-in-out infinite;
-}
-.animate-circle9 {
-  animation: circle 2.5s linear infinite 1.15, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle10 {
-  animation: circle 2.5s linear infinite 1.30s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle11 {
-  animation: circle 2.5s linear infinite 1.45s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle12 {
-  animation: circle 2.5s linear infinite 1.60s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle13 {
-  animation: circle 2.5s linear infinite 1.75s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle14 {
-  animation: circle 2.5s linear infinite 1.90s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle15 {
-  animation: circle 2.5s linear infinite 2.05s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle16 {
-  animation: circle 2.5s linear infinite 2.15s, pulse 1.2s ease-in-out infinite;
 }

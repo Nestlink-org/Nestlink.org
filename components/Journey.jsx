@@ -4,12 +4,42 @@ import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 
 const steps = [
-    { year: '2016', title: 'Foundation', desc: 'We began with a passionate small team and ambitious ideas, laying the foundation for innovative solutions that would scale with time.' },
-    { year: '2018', title: 'Early Growth', desc: 'Expanded our team, onboarded our first clients, and refined workflows to deliver reliable, high-quality services.' },
-    { year: '2019', title: 'Product Market Fit', desc: 'Launched our first flagship product, validated market demand, and strengthened our product strategy with user-centric insights.' },
-    { year: '2021', title: 'Cloud Expansion', desc: 'Migrated client systems to scalable cloud infrastructure, improving reliability, performance, and security across services.' },
-    { year: '2023', title: 'AI Integration', desc: 'Introduces AI-driven solutions for automation and analytics, delivering smarter, faster, and more precise decision-making tools.' },
-    { year: '2025', title: 'Global Scaling', desc: 'Expanded into multiple international markets, providing robust, secure, and innovative IT solutions worldwide.' },
+    {
+        year: '2022',
+        month: 'Mar',
+        title: 'Humble Beginnings',
+        desc: 'Three students - Comfortine, Sheldon, and Simon - started creating web pages as personal projects, laying the foundation for what would become NestLink.'
+    },
+    {
+        year: '2022',
+        month: 'Aug',
+        title: 'First Clients & Hackathons',
+        desc: 'Landed our first small clients and began participating in hackathons, where we discovered our potential and started dreaming bigger as a team.'
+    },
+    {
+        year: '2022',
+        month: 'Dec',
+        title: 'NestLink Foundation',
+        desc: 'Formally established NestLink as an organization, transforming from student developers into a professional team with a clear vision and mission.'
+    },
+    {
+        year: '2023',
+        month: 'Jun',
+        title: 'Service Expansion',
+        desc: 'Expanded our service offerings beyond web development to include comprehensive IT solutions, responding to growing client needs and market opportunities.'
+    },
+    {
+        year: '2023',
+        month: 'Nov',
+        title: 'Cloud & AI Integration',
+        desc: 'Integrated cloud infrastructure and AI capabilities into our solutions, delivering more scalable, intelligent, and cutting-edge services to our clients.'
+    },
+    {
+        year: '2024',
+        month: 'Present',
+        title: 'Full-Spectrum IT Solutions',
+        desc: 'Now providing end-to-end IT services - from web development and cloud solutions to AI integration, cybersecurity, and comprehensive digital transformation.'
+    },
 ];
 
 export default function Journey() {
@@ -43,17 +73,16 @@ export default function Journey() {
 
     return (
         <section className="py-24 flex justify-center bg-gradient-to-b from-black via-purple-900/10 to-black relative overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiM4MDIwZmYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik0wLDMwIGMzMCwwIDMwLDAgNjAsME0zMCwwIGMwLDMwIDAsMzAgMCw2MCIvPjwvZz48L3N2Zz4=')] opacity-20"></div>
+
 
             {/* Glowing orbs */}
             <motion.div
-                className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-blue-500/10 blur-[100px]"
+                className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-black blur-[70px]"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 8, repeat: Infinity }}
             />
             <motion.div
-                className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-purple-500/10 blur-[100px]"
+                className="absolute bottom-1/3 right-1/4 w-80 h-80 rounded-full bg-blue-800 blur-[70px]"
                 animate={{ scale: [1.2, 1, 1.2] }}
                 transition={{ duration: 7, repeat: Infinity }}
             />
@@ -97,7 +126,7 @@ export default function Journey() {
                             const isLeft = idx % 2 === 0;
                             return (
                                 <motion.div
-                                    key={s.year}
+                                    key={s.year + s.month}
                                     className="flex flex-col md:flex-row items-center justify-between relative"
                                     initial="hidden"
                                     whileInView="visible"
@@ -107,7 +136,7 @@ export default function Journey() {
                                 >
                                     {/* Year with hexagon shape and animated border */}
                                     <motion.div
-                                        className={`relative flex items-center justify-center w-24 h-24 z-10
+                                        className={`relative flex flex-col items-center justify-center w-30 h-30 z-10
                       ${isLeft ? 'md:order-1' : 'md:order-2'}`}
                                         whileHover={{ scale: 1.1, rotate: 5 }}
                                         transition={{ type: "spring", stiffness: 300 }}
@@ -137,14 +166,15 @@ export default function Journey() {
                                             </defs>
                                         </svg>
 
-                                        {/* Year text */}
-                                        <span className="text-white font-bold text-xl relative z-10">{s.year}</span>
+                                        {/* Year and month text */}
+                                        <span className="text-white font-bold text-[30px] relative z-10">{s.year}</span>
+                                        <span className="text-cyan-300 text-[20px] relative z-10">{s.month}</span>
 
                                         {/* Floating particles */}
                                         {[...Array(5)].map((_, i) => (
                                             <motion.div
                                                 key={i}
-                                                className="absolute w-1 h-1 rounded-full bg-cyan-300"
+                                                className="absolute w-3 h-3 rounded-full bg-cyan-100"
                                                 initial={{ opacity: 0 }}
                                                 whileInView={{ opacity: 1 }}
                                                 viewport={{ once: true }}
@@ -167,7 +197,7 @@ export default function Journey() {
 
                                     {/* Description Card with futuristic design */}
                                     <motion.div
-                                        className={`md:max-w-md text-white p-6 rounded-xl relative overflow-hidden border
+                                        className={`md:max-w-md text-white p-6 rounded-xl bg-gradient-to-br from-[#00142f] via-blue-800/50 to-[black] relative overflow-hidden border
                       ${isLeft ? 'md:ml-auto md:order-2 border-cyan-400/30' : 'md:mr-auto md:order-1 border-purple-400/30'}`}
                                         initial={{ opacity: 0, x: isLeft ? 100 : -100, rotateY: 45 }}
                                         whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
@@ -180,11 +210,6 @@ export default function Journey() {
                                                 : "0 0 20px rgba(168, 85, 247, 0.5)"
                                         }}
                                     >
-                                        {/* Background pattern */}
-                                        <div className={`absolute inset-0 opacity-5 ${isLeft ? 'bg-cyan-400' : 'bg-purple-400'}`} style={{
-                                            backgroundImage: `radial-gradient(circle at 25% 25%, currentColor 2%, transparent 2.5%)`,
-                                            backgroundSize: '30px 30px'
-                                        }}></div>
 
                                         {/* Glowing border effect */}
                                         <div className={`absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${isLeft ? 'bg-cyan-400/20' : 'bg-purple-400/20'}`}></div>
@@ -195,7 +220,7 @@ export default function Journey() {
                                         <div className={`absolute bottom-0 left-0 w-3 h-3 border-b-2 border-l-2 ${isLeft ? 'border-cyan-400' : 'border-purple-400'}`}></div>
                                         <div className={`absolute bottom-0 right-0 w-3 h-3 border-b-2 border-r-2 ${isLeft ? 'border-cyan-400' : 'border-purple-400'}`}></div>
 
-                                        <h4 className="text-xl font-bold mb-3 relative z-10 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-400">
+                                        <h4 className="text-xl font-bold mb-3 relative z-10 bg-clip-text text-white">
                                             {s.title}
                                         </h4>
                                         <p className="text-sm text-gray-300 leading-relaxed relative z-10">

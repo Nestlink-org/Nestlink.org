@@ -9,24 +9,7 @@ const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
 
   // Progress logic (starts when typing finishes)
-  useEffect(() => {
-    if (typingComplete) {
-      const interval = setInterval(() => {
-        setProgress((old) => {
-          const next = old + 2;
-          if (next >= 100) {
-            clearInterval(interval);
-            setTimeout(() => {
-              onComplete();
-            }, 500);
-          }
-          return next;
-        });
-      }, 100);
 
-      return () => clearInterval(interval);
-    }
-  }, [typingComplete, onComplete]);
 
   return (
     <div className="flex flex-col gap-2 items-center justify-center min-h-screen bg-black">

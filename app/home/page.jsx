@@ -6,9 +6,9 @@ import HeroSection from '@/components/HeroSection';
 import ServicesConstellation from '@/components/ServicesConstellation';
 import Journey from '@/components/Journey';
 import Stats from '@/components/Stats';
-import Stories from '@/components/Stories';
+
 import InnovationSpotlight from '@/components/InnovationSpotlight';
-import Testimonials from '@/components/Testimonials';
+
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -21,9 +21,9 @@ export default function HomePage() {
                 <ServicesConstellation />
                 <Journey />
                 <Stats />
-                <Stories />
+
                 <InnovationSpotlight />
-                <Testimonials />
+
 
                 <motion.div
                     initial={{ opacity: 0 }}

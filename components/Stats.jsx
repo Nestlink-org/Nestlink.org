@@ -49,7 +49,7 @@ function useCountOnView(target) {
 
 export default function Stats() {
     const stats = [
-        { label: 'Revenue helped (USD)', value: 120, suffix: 'k+', color: 'from-cyan-400 to-blue-500' },
+        { label: 'Revenue helped (USD)', value: 120, suffix: 'k+', color: 'from-cyan-200 to-blue-500' },
         { label: 'Projects delivered', value: 342, suffix: '+', color: 'from-purple-400 to-pink-500' },
         { label: 'Enterprise customers', value: 25, suffix: '+', color: 'from-green-400 to-emerald-500' },
         { label: 'Served clients', value: 180, suffix: '+', color: 'from-yellow-400 to-orange-500' },
@@ -81,15 +81,13 @@ export default function Stats() {
     }, []);
 
     return (
-        <section className="py-24 container mx-auto px-6 relative overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiM4MDIwZmYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik0wLDMwIGMzMCwwIDMwLDAgNjAsME0zMCwwIGMwLDMwIDAsMzAgMCw2MCIvPjwvZz48L3N2Zz4=')] opacity-10"></div>
+        <section className="py-24 container mx-auto px-6 relative ">
 
             {/* Floating particles */}
             {[...Array(20)].map((_, i) => (
                 <motion.div
                     key={i}
-                    className="absolute w-1 h-1 rounded-full bg-cyan-400"
+                    className="absolute w-3 h-3 rounded-full bg-white"
                     initial={{
                         x: Math.random() * 100 + 'vw',
                         y: Math.random() * 100 + 'vh',
@@ -110,7 +108,7 @@ export default function Stats() {
 
             {/* Glowing orbs */}
             <motion.div
-                className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-cyan-500/10 blur-[100px]"
+                className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-cyan-500 blur-[100px]"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 8, repeat: Infinity }}
             />

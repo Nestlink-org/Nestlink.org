@@ -6,9 +6,7 @@ import HeroSection from '@/components/HeroSection';
 import ServicesConstellation from '@/components/ServicesConstellation';
 import Journey from '@/components/Journey';
 import Stats from '@/components/Stats';
-
 import InnovationSpotlight from '@/components/InnovationSpotlight';
-
 import { motion } from 'framer-motion';
 
 export default function HomePage() {
@@ -21,7 +19,6 @@ export default function HomePage() {
                 <ServicesConstellation />
                 <Journey />
                 <Stats />
-
                 <InnovationSpotlight />
 
 

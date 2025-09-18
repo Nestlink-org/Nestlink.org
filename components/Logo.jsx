@@ -20,7 +20,7 @@ export default function Logo() {
             className="relative flex items-center"
         >
             {/* NestLink Text */}
-            <h1 className={`text-2xl font-bold relative z-10`}>
+            <h1 className={`text-4xl font-bold relative z-10`}>
                 <span className={nestColor}>Nest</span>
                 <span className="text-blue-400">Link</span>
             </h1>

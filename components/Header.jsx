@@ -25,8 +25,9 @@ const Header = () => {
         { name: 'Home', path: '/home' },
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
+        { name: 'Pricing', path: '/services' },
         { name: 'Innovation', path: '/innovation' },
-        { name: 'Clients', path: '/clients' },
+        { name: 'Clients', path: '/client' },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -70,7 +71,9 @@ const Header = () => {
 
 
                 {/* Navigation Links */}
-                <nav className="hidden md:flex space-x-8 text-base font-medium">
+                <nav className="hidden md:flex space-x-8 text-base font-medium p-4 rounded-[20px]
+                bg-gradient-to-r from-[#030363] via-black to-blue-600
+                shadow-[0_4px_15px_white]">
                     {navItems.map((item) => {
                         const isActive = pathname === item.path;
                         return (
@@ -84,8 +87,8 @@ const Header = () => {
                                     href={item.path}
                                     className={`transition-colors duration-300 relative
                     ${isActive
-                                            ? 'text-blue-600 dark:text-blue-400'
-                                            : 'text-gray-900 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400'
+                                            ? 'text-[blue] dark:text-[blue]'
+                                            : 'text-white dark:text-[] hover:text-blue-600 dark:hover:text-blue-400'
                                         }`}
                                 >
                                     {item.name}
@@ -102,7 +105,7 @@ const Header = () => {
                     })}
                 </nav>
 
-                {/* Theme Toggle + Sign In */}
+                {/* Theme Toggle + phone no */}
                 <div className="flex items-center space-x-4">
                     {/* Theme Toggle */}
                     <motion.button
@@ -141,9 +144,9 @@ const Header = () => {
                     <motion.button
                         whileHover={{ scale: 1.1, y: -2 }}
                         whileTap={{ scale: 0.95 }}
-                        className="px-4 py-2 rounded-lg bg-gradient-to-br from-purple-600 to-blue-600 text-white font-semibold shadow-lg"
+                        className="px-4 py-2 rounded-lg  text-[blue] font-semibold shadow-lg border-white border"
                     >
-                        Sign In
+                        +254 757 161 1754
                     </motion.button>
                 </div>
             </div>

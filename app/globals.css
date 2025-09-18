@@ -5,9 +5,9 @@ body {
   background: 
     radial-gradient(
       circle at 50% -20%,
-      #ffffff 0%,
-      #f0f0f0 80%,
-      rgba(59, 130, 246, 0.3) 90%,
+      #f8f8f8 0%,
+      #9785fb 80%,
+      rgba(59, 130, 246, 0.6) 90%,
       #e5e7eb 100%
     ),
     #f9fafb; /* fallback light gray */

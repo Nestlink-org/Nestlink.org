@@ -48,14 +48,14 @@ const Header = () => {
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
                     transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    whileHover={{ scale: 1.05, rotate: 5 }}
+
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center space-x-2"
                 >
                     {/* Logo image */}
                     <div className="w-20 h-20 ">
                         <img
-                            src="/NestlinkDarkLogo.png"   // 👈 replace with your logo filename inside /public
+                            src="/DarkLogo.png"
                             alt="Nestlink Logo"
                             width={100}
                             height={48}

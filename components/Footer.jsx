@@ -80,12 +80,13 @@ export default function Footer() {
                     <h3 className="text-xl font-semibold text-blue-300 mb-4">Quick Links</h3>
                     <ul className="space-y-2 text-text-secondary">
                         <li><a href="/home" className="hover:text-blue-400 hover:underline transition">Home</a></li>
+                        <li><a href="/about" className="hover:text-blue-400 hover:underline transition">About</a></li>
                         <li><a href="/services" className="hover:text-blue-400 hover:underline transition">Services</a></li>
+                        <li><a href="/projects" className="hover:text-blue-400 hover:underline transition">Projects</a></li>
                         <li><a href="/pricing" className="hover:text-blue-400 hover:underline transition">Pricing</a></li>
                         <li><a href="/clients" className="hover:text-blue-400 hover:underline transition">Clients Portal</a></li>
-                        <li><a href="/about" className="hover:text-blue-400 hover:underline transition">About</a></li>
                         <li><a href="/contact" className="hover:text-blue-400 hover:underline transition">Contact</a></li>
-                        <li><a href="/innovation" className="hover:text-blue-400 hover:underline transition">Innovation</a></li>
+
                     </ul>
                 </motion.div>
 

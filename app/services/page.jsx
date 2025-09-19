@@ -8,7 +8,7 @@ const services = [
     {
         title: 'Software Development',
         desc: 'Custom software solutions built with modern technologies and best practices. We create scalable, maintainable applications that solve real business problems.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-developer-looking-at-code-while-working-on-laptop-34639-large.mp4',
+        video: '/video.mp4',
         color: 'from-blue-800 to-cyan-600',
         tools: ['Node.js', 'Python', 'Java', 'C#', 'PostgreSQL', 'MongoDB'],
         features: ['Custom Applications', 'API Development', 'Database Design', 'System Architecture']
@@ -16,7 +16,7 @@ const services = [
     {
         title: 'Website Development & Design',
         desc: 'Stunning, responsive websites with modern frameworks and cutting-edge design. We focus on user experience, performance, and conversion optimization.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-hands-of-a-programmer-working-on-a-laptop-34637-large.mp4',
+        video: '/web.mp4',
         color: 'from-blue-900 to-sky-500',
         tools: ['React', 'Next.js', 'Tailwind CSS', 'TypeScript', 'FastAPI', 'Framer Motion'],
         features: ['Responsive Design', 'SEO Optimization', 'Performance Tuning', 'UI/UX Design']
@@ -24,7 +24,7 @@ const services = [
     {
         title: 'Mobile App Development',
         desc: 'Native and cross-platform mobile applications for iOS and Android. We build intuitive, high-performance apps that users love.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-woman-demonstrating-tablet-app-36975-large.mp4',
+        video: '/mobile.mp4',
         color: 'from-indigo-900 to-blue-500',
         tools: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Firebase', 'GraphQL'],
         features: ['iOS & Android', 'Cross-Platform', 'App Store Deployment', 'Push Notifications']
@@ -32,7 +32,7 @@ const services = [
     {
         title: 'Cloud & DevOps',
         desc: 'End-to-end cloud infrastructure and DevOps solutions. We automate deployments, ensure scalability, and maintain robust cloud environments.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-server-racks-in-a-dark-datacenter-40950-large.mp4',
+        video: '/devops.mp4',
         color: 'from-black to-blue-700',
         tools: ['AWS', 'Docker', 'Kubernetes', 'Terraform', 'CI/CD', 'Monitoring'],
         features: ['Cloud Migration', 'Infrastructure as Code', 'Auto Scaling', '24/7 Monitoring']
@@ -40,7 +40,7 @@ const services = [
     {
         title: 'AI & Machine Learning',
         desc: 'Intelligent solutions powered by artificial intelligence and machine learning. We transform data into actionable insights and automation.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-abstract-ai-brain-circuit-40809-large.mp4',
+        video: '/ai.mp4',
         color: 'from-blue-950 to-cyan-400',
         tools: ['TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenCV', 'NLP', 'Computer Vision'],
         features: ['Predictive Analytics', 'Natural Language Processing', 'Computer Vision', 'AI Integration']
@@ -48,7 +48,7 @@ const services = [
     {
         title: 'Cybersecurity',
         desc: 'Comprehensive security solutions to protect your digital assets. We implement robust security measures and threat detection systems.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-padlock-with-rotating-gears-40823-large.mp4',
+        video: '/cyber.mp4',
         color: 'from-black to-blue-600',
         tools: ['Penetration Testing', 'Encryption', 'Firewalls', 'Security Audits', 'Zero Trust'],
         features: ['Threat Detection', 'Vulnerability Assessment', 'Data Protection', 'Security Compliance']
@@ -56,7 +56,7 @@ const services = [
     {
         title: 'Networking Solutions',
         desc: 'Reliable and secure network infrastructure for businesses of all sizes. We design, implement, and maintain robust networking systems.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-close-up-of-ethernet-cables-41243-large.mp4',
+        video: '/network.mp4',
         color: 'from-blue-800 to-sky-400',
         tools: ['Cisco', 'Juniper', 'SD-WAN', 'VPN', 'Wireless', 'Network Monitoring'],
         features: ['Network Design', 'Implementation', 'Troubleshooting', 'Performance Optimization']
@@ -64,7 +64,7 @@ const services = [
     {
         title: 'IoT Development',
         desc: 'Internet of Things solutions that connect devices and enable smart automation. We build IoT ecosystems that drive efficiency and innovation.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-smart-home-device-40787-large.mp4',
+        video: '/iot.mp4',
         color: 'from-blue-900 to-cyan-500',
         tools: ['Arduino', 'Raspberry Pi', 'MQTT', 'AWS IoT', 'Sensor Networks', 'Edge Computing'],
         features: ['Device Connectivity', 'Data Collection', 'Remote Monitoring', 'Automation Systems']
@@ -72,7 +72,7 @@ const services = [
     {
         title: 'Blockchain Development',
         desc: 'Decentralized applications and smart contracts built on blockchain technology. We create secure, transparent, and innovative solutions.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-abstract-blockchain-animation-40887-large.mp4',
+        video: '/blochain.mp4',
         color: 'from-black to-blue-500',
         tools: ['Ethereum', 'Solidity', 'Web3.js', 'Smart Contracts', 'NFTs', 'DeFi'],
         features: ['Smart Contracts', 'dApps', 'Tokenization', 'Blockchain Integration']
@@ -80,7 +80,7 @@ const services = [
     {
         title: 'Data Analytics',
         desc: 'Transform your data into actionable insights with advanced analytics and visualization tools. Make data-driven decisions with confidence.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-data-analysis-graphs-and-charts-40801-large.mp4',
+        video: '/data.mp4',
         color: 'from-blue-800 to-sky-500',
         tools: ['Tableau', 'Power BI', 'Python', 'R', 'SQL', 'Data Visualization'],
         features: ['Data Visualization', 'Business Intelligence', 'Reporting', 'Predictive Modeling']
@@ -88,7 +88,7 @@ const services = [
     {
         title: 'UX/UI Design',
         desc: 'Beautiful, intuitive user interfaces that enhance user experience and drive engagement. We design with purpose and precision.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-designer-working-on-interface-sketch-36979-large.mp4',
+        video: '/ui.mp4',
         color: 'from-indigo-900 to-blue-400',
         tools: ['Figma', 'Adobe XD', 'Sketch', 'Prototyping', 'User Research', 'Wireframing'],
         features: ['User Research', 'Wireframing', 'Prototyping', 'Design Systems']
@@ -96,7 +96,7 @@ const services = [
     {
         title: 'Digital Marketing',
         desc: 'Comprehensive digital marketing strategies that drive growth and increase brand visibility across all digital channels.',
-        video: 'https://assets.mixkit.co/videos/preview/mixkit-digital-marketing-analytics-40805-large.mp4',
+        video: '/iot.mp4',
         color: 'from-blue-950 to-cyan-500',
         tools: ['SEO', 'Google Analytics', 'Social Media', 'Content Marketing', 'PPC', 'Email Marketing'],
         features: ['SEO Optimization', 'Social Media Management', 'Content Strategy', 'Performance Analytics']
@@ -254,6 +254,7 @@ export default function ServicesWeOffer() {
                                             className="w-full h-full object-cover"
                                         >
                                             <source src={service.video} type="video/mp4" />
+                                            Your browser does not support the video tag.
                                         </video>
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 

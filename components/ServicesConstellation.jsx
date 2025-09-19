@@ -182,7 +182,7 @@ export default function ServicesConstellation() {
                     onClick={toggleConstellation}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="px-4 py-2 rounded-full border border-purple-500/30 text-purple-300 text-sm mb-8 flex items-center gap-2 mx-auto"
+                    className="px-4 py-2 rounded-full border border-secondary text-secondary text-sm mb-8 flex items-center gap-2 mx-auto"
                 >
                     {constellationVisible ? 'NestLink' : 'Enjoy Our services'}
                     <span className="text-lg">{constellationVisible ? '✨' : '🌌'}</span>
@@ -230,14 +230,14 @@ export default function ServicesConstellation() {
                     {services.map((s, idx) => (
                         <motion.div
                             key={s.title}
-                            className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-br from-gray-900/80 to-gray-800/80 backdrop-blur-md cursor-pointer group"
+                            className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-gradient-to-br from-blue-900 to-gray-800 backdrop-blur-md cursor-pointer group "
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: false, amount: 0.3 }}
                             variants={cardVariants}
                             transition={{ duration: 0.8, delay: idx * 0.1 }}
                             whileHover={{
-                                scale: 1.03,
+                                scale: 1,
                                 rotate: Math.random() * 2 - 1,
                                 y: -5,
                                 transition: { type: 'spring', stiffness: 300 }
@@ -246,7 +246,7 @@ export default function ServicesConstellation() {
                             onHoverEnd={() => setActiveService(null)}
                         >
                             {/* Glow effect based on service color */}
-                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-br ${s.color} rounded-2xl blur-xl -z-10`}></div>
+                            <div className={`absolute inset-0 opacity-0 group-hover:opacity-50 transition-opacity duration-500 bg-gradient-to-br ${s.color} rounded-2xl blur-xl -z-10`}></div>
 
                             {/* Service Image */}
                             <div className="w-full h-40 md:h-48 relative overflow-hidden">

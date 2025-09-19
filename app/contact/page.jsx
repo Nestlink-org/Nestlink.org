@@ -49,9 +49,9 @@ export default function ContactPage() {
             ),
             title: "Phone",
             description: "Speak directly with our team",
-            details: "+1 (555) 123-4567",
+            details: "+254-757-161-754, +254-796-218-073, +254-793-867-001",
             action: "Call now",
-            link: "tel:+15551234567"
+            link: "tel:+254757161754"
         },
         {
             icon: (
@@ -74,7 +74,7 @@ export default function ContactPage() {
             ),
             title: "Office",
             description: "Visit our headquarters",
-            details: "123 Innovation Drive, Tech City, TC 12345",
+            details: "Ongata Rongai, 4th Avenue Magadi Road",
             action: "Get directions",
             link: "https://maps.google.com"
         },
@@ -95,7 +95,7 @@ export default function ContactPage() {
     const faqs = [
         {
             question: "How long does it take to start a project?",
-            answer: "Typically, we can begin your project within 1-2 weeks after the initial consultation and agreement signing. Complex projects may require additional planning time."
+            answer: "Typically, we can begin your project within 1-3 days after the initial consultation and agreement signing. Complex projects may require additional planning time."
         },
         {
             question: "Do you offer ongoing support after project completion?",
@@ -110,14 +110,14 @@ export default function ContactPage() {
     return (
         <>
             <Header />
-            <section className="min-h-screen py-20 px-6 bg-gradient-to-br from-background-primary to-background-secondary">
+            <section className="min-h-screen py-20 px-6 mt-15">
                 {/* Animated background elements */}
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.5 }}
-                    className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-r from-purple-400/10 to-pink-400/10 blur-3xl"
+                    className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-r from-blue-400 to-purple-400 blur-3xl"
                 />
 
                 <motion.div
@@ -125,7 +125,7 @@ export default function ContactPage() {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.3 }}
                     transition={{ duration: 1.5, delay: 0.3 }}
-                    className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-r from-blue-400/10 to-cyan-400/10 blur-3xl"
+                    className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400 blur-3xl"
                 />
 
                 <div className="max-w-7xl mx-auto">
@@ -345,7 +345,7 @@ export default function ContactPage() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         type="submit"
-                                        className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all"
+                                        className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
                                     >
                                         Send Message
                                     </motion.button>

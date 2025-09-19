@@ -3,16 +3,7 @@
 import { motion } from 'framer-motion';
 import Logo from './Logo';
 
-/**
- * Footer Component
- * A futuristic, animated 3D-inspired footer with multiple sections:
- * - Company Info
- * - Quick Links
- * - Contact
- * - Newsletter subscription
- * - Social media icons
- * Includes subtle floating accents, gradients, hover interactions, and smooth 3D feel.
- */
+
 export default function Footer() {
     return (
         <footer className="relative bg-gradient-to-t from-gray-900/90 via-black/80 to-gray-900/90 text-white py-20 px-6 overflow-hidden mt-auto">

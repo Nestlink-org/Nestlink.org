@@ -12,7 +12,7 @@ const LoadingScreen = ({ onComplete }) => {
 
 
   return (
-    <div className="flex flex-col gap-2 items-center justify-center min-h-screen bg-black">
+    <div className="flex flex-col gap-2 items-center justify-center min-h-screen main-center">
       {/* animated svg */}
       <BuildingSVG progress={progress} />
 

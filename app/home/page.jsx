@@ -8,6 +8,9 @@ import Journey from '@/components/Journey';
 import Stats from '@/components/Stats';
 import InnovationSpotlight from '@/components/InnovationSpotlight';
 import { motion } from 'framer-motion';
+import Partners from '@/components/Partners';
+import CyberpunkScrollSections from '@/components/Cyberpunk';
+
 
 export default function HomePage() {
     return (
@@ -16,8 +19,10 @@ export default function HomePage() {
 
             <main className="relative overflow-hidden">
                 <HeroSection />
+                <Partners />
                 <ServicesConstellation />
                 <Journey />
+                <CyberpunkScrollSections />
                 <Stats />
                 <InnovationSpotlight />
 

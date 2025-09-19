@@ -2,14 +2,16 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const BuildingSVG = ({ progress = 100 }) => {
+    // ==== Theme Colors ====
     const outlineStaticColor = "white";
-    const outlineAnimatedColor = "#3B82F6";
-    const circuitLineColor = "#00ff00";
+    const outlineAnimatedColor = "#3B82F6"; // Tailwind blue-500
+    const circuitLineColor = "#00FF66"; // bright green signal
     const windowColor = "purple";
 
     const glowColorOutline = outlineAnimatedColor;
     const glowColorCircuit = circuitLineColor;
 
+    // ==== Helpers ====
     const getPathLength = (pathD) => {
         try {
             if (typeof document !== "undefined") {
@@ -23,6 +25,7 @@ const BuildingSVG = ({ progress = 100 }) => {
 
     const calculateDashOffset = (length, prog) => length - (prog / 100) * length;
 
+    // ==== Building Shapes ====
     const building1Path = "M100 250 L100 80 L150 40 L200 80 L200 250 Z";
     const building2Path = "M40 250 L40 160 L80 130 L120 160 L120 250 Z";
     const building3Path = "M180 250 L180 150 L220 120 L260 150 L260 250 Z";
@@ -40,23 +43,21 @@ const BuildingSVG = ({ progress = 100 }) => {
         "M230 230 H250 V210 H230 Z",
     ];
 
+    // ==== Circuit Paths ====
     const circuitPaths = [
         "M140 240 L140 180 C130 170, 150 170, 140 160 S130 140, 140 130 L140 90",
         "M110 220 L130 200 C140 190, 160 190, 170 200 L190 220",
-        // "M120 160 L130 150 L140 160 L150 150 L160 160",
         "M170 240 L170 190 C180 180, 190 180, 190 170 S180 160, 170 150",
-        // "M100 200 C90 190, 80 180, 70 170 L60 160",
         "M120 200 C110 210, 90 220, 70 230",
         "M80 150 L90 140 L100 150 L110 140",
         "M70 240 L70 200 C60 190, 80 190, 70 180 S60 170, 70 160",
         "M50 220 L70 210 L90 220 L110 210",
-        // "M180 200 C190 190, 200 180, 210 170 L220 160",
         "M200 200 C210 210, 230 220, 250 230",
         "M210 240 L210 200 C200 190, 220 190, 210 180 S200 170, 210 160",
         "M190 220 L210 210 L230 220 L250 210",
-
     ];
 
+    // ==== Circuit Nodes ====
     const nodes = [
         { cx: 140, cy: 90, delay: 0.6 },
         { cx: 190, cy: 220, delay: 0.8 },
@@ -73,9 +74,9 @@ const BuildingSVG = ({ progress = 100 }) => {
         { cx: 140, cy: 130, delay: 0.7 },
         { cx: 170, cy: 150, delay: 0.9 },
         { cx: 120, cy: 160, delay: 1.1 },
-
     ];
 
+    // ==== Stars ====
     const starPath = (cx, cy, spikes = 5, outer = 8, inner = 4) => {
         let rot = -Math.PI / 2;
         const step = Math.PI / spikes;
@@ -113,7 +114,7 @@ const BuildingSVG = ({ progress = 100 }) => {
             xmlns="http://www.w3.org/2000/svg"
             className="mt-2"
         >
-            {/* Static outlines */}
+            {/* ==== Static Outlines ==== */}
             {buildPaths.map((d, i) => (
                 <path
                     key={`b-static-${i}`}
@@ -124,12 +125,12 @@ const BuildingSVG = ({ progress = 100 }) => {
                 />
             ))}
 
-            {/* Windows */}
+            {/* ==== Windows ==== */}
             {windowPaths.map((d, i) => (
                 <path key={`w-${i}`} d={d} fill={windowColor} opacity="0.8" />
             ))}
 
-            {/* Building trace + glow */}
+            {/* ==== Building Trace + Glow ==== */}
             {buildPaths.map((d, i) => {
                 const length = getPathLength(d);
                 const offset = calculateDashOffset(length, progress);
@@ -163,7 +164,7 @@ const BuildingSVG = ({ progress = 100 }) => {
                 );
             })}
 
-            {/* Circuit lines */}
+            {/* ==== Circuit Lines with Flow Effect ==== */}
             {circuitPaths.map((d, i) => {
                 const length = getPathLength(d);
                 return (
@@ -174,14 +175,21 @@ const BuildingSVG = ({ progress = 100 }) => {
                         strokeWidth="2"
                         fill="transparent"
                         strokeDasharray={length}
-                        strokeDashoffset={calculateDashOffset(length, progress)}
+                        strokeDashoffset={0}
                         style={{ filter: `drop-shadow(0 0 5px ${glowColorCircuit})` }}
-                        transition={{ duration: 1.0, ease: "easeOut", delay: i * 0.05 }}
+                        initial={{ strokeDashoffset: length }}
+                        animate={{ strokeDashoffset: [length, 0] }}
+                        transition={{
+                            duration: 2.5,
+
+                            ease: "linear",
+                            delay: i * 0.3,
+                        }}
                     />
                 );
             })}
 
-            {/* Circuit nodes */}
+            {/* ==== Circuit Nodes ==== */}
             {nodes.map((n, i) => (
                 <motion.circle
                     key={`n-${i}`}
@@ -202,7 +210,7 @@ const BuildingSVG = ({ progress = 100 }) => {
                 />
             ))}
 
-            {/* Twinkling stars */}
+            {/* ==== Twinkling Stars ==== */}
             {stars.map((s, i) => (
                 <motion.path
                     key={`s-${i}`}
@@ -220,7 +228,7 @@ const BuildingSVG = ({ progress = 100 }) => {
                 />
             ))}
 
-            {/* NL text inside Building 1 */}
+            {/* ==== NL Text ==== */}
             <motion.text
                 x="150"
                 y="130"

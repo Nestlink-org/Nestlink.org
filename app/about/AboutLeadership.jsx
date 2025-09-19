@@ -6,8 +6,8 @@ const leaders = [
     {
         name: 'Comfortine Siwende O.',
         role: 'CEO',
-        img: 'https://randomuser.me/api/portraits/women/68.jpg',
-        description: 'Visionary leader with 10+ years in tech entrepreneurship',
+        img: '/comfortine.png',
+        description: 'Visionary AI Ethusiast in tech entrepreneurship',
         socials: {
             github: '#',
             linkedin: '#',
@@ -20,8 +20,8 @@ const leaders = [
     {
         name: 'Melvin Simon O.',
         role: 'CTO',
-        img: 'https://randomuser.me/api/portraits/men/65.jpg',
-        description: 'Tech innovator specializing in AI and blockchain',
+        img: '/simo.png',
+        description: 'Tech innovator specializing in Software Development and blockchain',
         socials: {
             github: '#',
             linkedin: '#',
@@ -34,8 +34,8 @@ const leaders = [
     {
         name: 'Sheldon Billy O.',
         role: 'COO',
-        img: 'https://randomuser.me/api/portraits/women/45.jpg',
-        description: 'Operations expert with background in scaling startups',
+        img: '/sheldon.png',
+        description: 'Operations expert and Pro.Developer with background in scaling startups',
         socials: {
             github: '#',
             linkedin: '#',

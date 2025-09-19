@@ -74,7 +74,7 @@ export default function HeroSection() {
                         <motion.a
                             whileHover={{ scale: 1.03 }}
                             whileTap={{ scale: 0.98 }}
-                            href="/about"
+                            href="/projects"
                             className="inline-flex items-center gap-3 bg-gradient-to-br from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg"
                         >
                             Explore Our Work <span className="text-xl">→</span>

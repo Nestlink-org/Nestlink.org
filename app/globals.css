@@ -1,14 +1,28 @@
 @import "tailwindcss";
 
+.main-center {
+  background: radial-gradient(circle at 50% -20%,
+      #000000 0%,
+      #050505 70%,
+      rgba(30, 60, 150, 0.4) 85%,
+      #000000 100%),
+    #000000;
+  /* fallback pure black */
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background 0.6s ease-in-out;
+}
+
 /* Light mode background */
 body {
   background: 
     radial-gradient(
       circle at 50% -20%,
-      #f8f8f8 0%,
-      #9785fb 80%,
-      rgba(59, 130, 246, 0.6) 90%,
-      #e5e7eb 100%
+      #ffffff 0%,
+      #ADD8E6 80%,
+      rgba(91, 110, 221, 0.6) 90%,
+      #82d7f4 100%
     ),
     #f9fafb; /* fallback light gray */
   background-attachment: fixed;
@@ -139,3 +153,6 @@ body {
 .animate-circle8 {
   animation: circle 2.5s linear infinite 1.05s, pulse 1.2s ease-in-out infinite;
 }
+
+
+

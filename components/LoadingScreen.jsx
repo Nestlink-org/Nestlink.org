@@ -19,13 +19,13 @@ const LoadingScreen = ({ onComplete }) => {
       {/* <img src="/NL.png" width={300} height={2} /> */}
       <Logo />
 
-      <div className="lg:text-3xl sm:text-[10px] font-extrabold bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent bg-clip-text text-center">
+      {/* <div className="lg:text-3xl sm:text-[10px] font-extrabold bg-gradient-to-r from-white via-blue-300 to-blue-500 text-transparent bg-clip-text text-center">
         <TypingEffect
           text="A moment while we set everything ready for you..."
           onTypingComplete={() => setTypingComplete(true)}
         />
         <span className="animate-blink text-blue-500">|</span>
-      </div>
+      </div> */}
 
       {/* progress bar */}
 

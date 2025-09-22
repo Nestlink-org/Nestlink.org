@@ -53,7 +53,7 @@ const Header = () => {
                     className="flex items-center space-x-2"
                 >
                     {/* Logo image */}
-                    <div className="w-20 h-20 ">
+                    {/* <div className="w-20 h-20 ">
                         <img
                             src="/DarkLogo.png"
                             alt="Nestlink Logo"
@@ -61,7 +61,7 @@ const Header = () => {
                             height={48}
                             className="object-contain rounded-[50px]"
                         />
-                    </div>
+                    </div> */}
 
                     {/* Logo text */}
                     <span className="hidden sm:block text-xl font-bold text-blue-600 dark:text-blue-200">

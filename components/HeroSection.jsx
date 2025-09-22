@@ -2,10 +2,10 @@
 'use client';
 
 import { motion, useAnimation } from 'framer-motion';
-import Link from 'next/link';
 import { useEffect } from 'react';
 import { useScroll } from 'framer-motion';
-
+import Link from 'next/link';
+import { Button } from '@/components/ui/button';
 
 export default function HeroSection() {
     const videoControls = useAnimation();
@@ -16,7 +16,7 @@ export default function HeroSection() {
         const unsubscribe = scrollYProgress.on("change", (progress) => {
             if (progress > 0.2) {
                 videoControls.start({
-                    scale: 1.1, // slightly bigger than before
+                    scale: 1.1,
                     transition: { duration: 0.8, ease: 'easeOut' }
                 });
             } else {
@@ -26,7 +26,6 @@ export default function HeroSection() {
                 });
             }
         });
-
         return () => unsubscribe();
     }, [scrollYProgress, videoControls]);
 
@@ -42,9 +41,9 @@ export default function HeroSection() {
                     transition={{ duration: 0.7 }}
                     className="lg:w-1/2"
                 >
-                    <h1 className={`text-5xl font-bold relative z-10 `}>
-                        @<span >Nest</span>
-                        <span className="text-blue-400">Link</span>.Org
+                    <h1 className="text-5xl font-bold relative z-10">
+                        @<span>Nest</span>
+                        <span className="text-primary">Link</span>.Org
                     </h1>
 
                     <motion.h1
@@ -63,7 +62,7 @@ export default function HeroSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.8 }}
                         viewport={{ once: false }}
-                        className="mt-6 text-lg text-text-secondary max-w-xl"
+                        className="mt-6 text-lg text-muted-foreground max-w-xl"
                     >
                         We create immersive, interactive web experiences — 3D visualizations,
                         cloud expansions, and AI-driven tools that scale. Elevate your brand
@@ -71,23 +70,23 @@ export default function HeroSection() {
                     </motion.p>
 
                     <div className="mt-8 flex items-center gap-4">
-                        <motion.a
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            href="/projects"
-                            className="inline-flex items-center gap-3 bg-gradient-to-br from-blue-600 to-purple-600 text-white px-6 py-3 rounded-full shadow-lg"
-                        >
-                            Explore Our Work <span className="text-xl">→</span>
-                        </motion.a>
+                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                            <Link href="/projects">
+                                <Button size="lg" className="gap-2">
+                                    Explore Our Work →
+                                </Button>
+                            </Link>
+                        </motion.div>
 
-                        <motion.a
-                            whileHover={{ scale: 1.03 }}
-                            whileTap={{ scale: 0.98 }}
-                            href="/pricing"
-                            className="inline-flex items-center gap-3 border border-blue-600 text-white bg-gradient-to-br from-[#0a0aa9] via-black to-[#080876] px-5 py-3 rounded-full backdrop-blur-sm"
-                        >
-                            Talk to Sales
-                        </motion.a>
+                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                            <Link href="/pricing">
+                                <Button size="lg" variant="outline" className="gap-2">
+                                    Talk to Sales
+                                </Button>
+                            </Link>
+                        </motion.div>
+
+                        <Button size="lg" variant="secondary">Hello</Button>
                     </div>
                 </motion.div>
 
@@ -106,11 +105,10 @@ export default function HeroSection() {
                         <motion.div
                             whileHover={{ rotateY: 8, scale: 1.02 }}
                             transition={{ type: 'spring', stiffness: 160, damping: 18 }}
-                            className="rounded-2xl shadow-2xl bg-gradient-to-br from-[#050312]/80 to-[#0b0f17]/60 border border-white/5 p-6"
+                            className="rounded-2xl shadow-2xl bg-card border p-6"
                         >
-
                             {/* autoplaying local tech video */}
-                            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-black/40 flex items-center justify-center">
+                            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-muted flex items-center justify-center">
                                 <video
                                     className="w-full h-full object-cover"
                                     src="/video.mp4"
@@ -123,17 +121,12 @@ export default function HeroSection() {
                                 </video>
                             </div>
 
-
                             <div className="mt-4 flex justify-between items-center">
-                                <div className="text-sm text-text-secondary">Realtime metrics</div>
-
+                                <div className="text-sm text-muted-foreground">
+                                    Realtime metrics
+                                </div>
                             </div>
                         </motion.div>
-
-
-
-
-
                     </motion.div>
                 </motion.div>
             </div>

@@ -133,7 +133,7 @@ export default function Footer() {
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
             >
-                © 2025 NestLink. All rights reserved. Crafted with ❤️ by our team.
+                © 2025 NestLink. All rights reserved.
             </motion.div>
         </footer>
     );

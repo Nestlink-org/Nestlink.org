@@ -1,8 +1,10 @@
 'use client';
 
 import Header from '@/components/Header';
-import { motion, useAnimation } from 'framer-motion';
-import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Card } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 const services = [
     {
@@ -104,63 +106,24 @@ const services = [
 ];
 
 export default function ServicesWeOffer() {
-    const titleRef = useRef();
-    const [isTitleInView, setIsTitleInView] = useState(false);
     const [flippedCards, setFlippedCards] = useState({});
-    const [isDarkMode, setIsDarkMode] = useState(true);
 
-    // Set up intersection observer for the title
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsTitleInView(entry.isIntersecting);
-            },
-            { threshold: 0.5 }
-        );
-
-        if (titleRef.current) {
-            observer.observe(titleRef.current);
-        }
-
-        return () => {
-            if (titleRef.current) {
-                observer.unobserve(titleRef.current);
-            }
-        };
-    }, []);
-
-    // Connect to your theme context
-    useEffect(() => {
-        // This should be replaced with your actual theme context
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        setIsDarkMode(mediaQuery.matches);
-
-        const handler = (e) => setIsDarkMode(e.matches);
-        mediaQuery.addEventListener('change', handler);
-
-        return () => mediaQuery.removeEventListener('change', handler);
-    }, []);
-
-    const toggleFlip = (index) => {
-        setFlippedCards(prev => ({
-            ...prev,
-            [index]: !prev[index]
-        }));
-    };
+    const toggleFlip = (index) =>
+        setFlippedCards((prev) => ({ ...prev, [index]: !prev[index] }));
 
     return (
         <>
             <Header />
-            <section className="py-24 container mx-auto px-6 relative " id="services">
-                {/* Hero Section Background */}
-                <div className="absolute inset-0 -z-10 "></div>
-
-                {/* Animated grid overlay */}
-                <div className="absolute inset-0 -z-10 opacity-20" style={{
-                    backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-                                linear-gradient(to bottom, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
-                    backgroundSize: '50px 50px'
-                }}></div>
+            <section className="py-24 container mx-auto px-6 relative" id="services">
+                {/* Grid Background */}
+                <div
+                    className="absolute inset-0 -z-10 opacity-20 animate-[backgroundMove_30s_linear_infinite]"
+                    style={{
+                        backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
+                        backgroundSize: '50px 50px'
+                    }}
+                />
 
                 {/* Floating particles */}
                 <div className="absolute inset-0 -z-10">
@@ -173,244 +136,119 @@ export default function ServicesWeOffer() {
                                 height: Math.random() * 4 + 1,
                                 top: `${Math.random() * 100}%`,
                                 left: `${Math.random() * 100}%`,
-                                opacity: Math.random() * 0.7,
+                                opacity: Math.random() * 0.7
                             }}
                             animate={{
                                 y: [0, -30, 0],
                                 x: [0, Math.random() * 20 - 10, 0],
-                                opacity: [0.3, 0.8, 0.3],
+                                opacity: [0.3, 0.8, 0.3]
                             }}
                             transition={{
                                 duration: Math.random() * 10 + 10,
                                 repeat: Infinity,
-                                delay: Math.random() * 5,
+                                delay: Math.random() * 5
                             }}
                         />
                     ))}
                 </div>
 
-                {/* Header with Hero Section Styling */}
-                <div ref={titleRef} className="text-center max-w-4xl mx-auto mb-20 relative">
-                    <motion.h2
-                        className="text-5xl md:text-7xl font-black mb-6 text-white"
-                        initial={{ opacity: 0, y: -30, letterSpacing: '1rem' }}
-                        animate={isTitleInView ?
-                            { opacity: 1, y: 0, letterSpacing: '0.05em' } :
-                            { opacity: 0, y: -30, letterSpacing: '1rem' }
-                        }
-                        transition={{ duration: 1.2, ease: "easeOut" }}
-                    >
+                {/* Title */}
+                <div className="text-center max-w-4xl mx-auto mb-20 relative z-10">
+                    <h2 className="text-5xl md:text-7xl font-black mb-6">
                         SERVICES WE OFFER
-                    </motion.h2>
-
-                    <motion.p
-                        className="text-xl md:text-2xl text-white/80 max-w-3xl mx-auto leading-relaxed"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                    >
+                    </h2>
+                    <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
                         Transforming ideas into exceptional digital experiences through cutting-edge technology and innovative solutions.
                         We deliver comprehensive services tailored to your unique business needs.
-                    </motion.p>
-
-                    {/* Hero section decoration */}
-                    <motion.div
-                        className="absolute -top-20 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-cyan-500/20 blur-3xl"
-                        animate={{ scale: [1, 1.2, 1] }}
-                        transition={{ duration: 8, repeat: Infinity }}
-                    />
+                    </p>
                 </div>
 
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
                     {services.map((service, index) => (
-                        <motion.div
+                        <div
                             key={service.title}
-                            className="relative h-96 cursor-pointer group"
-                            initial={{ opacity: 0, y: 50, rotateY: -180 }}
-                            whileInView={{ opacity: 1, y: 0, rotateY: 0 }}
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ duration: 0.8, delay: index * 0.1 }}
-                            whileHover={{ scale: 1.02 }}
+                            className="relative h-96 cursor-pointer perspective"
                             onClick={() => toggleFlip(index)}
                         >
-                            {/* 3D Flip Container */}
-                            <motion.div
-                                className="relative w-full h-full"
-                                animate={{ rotateY: flippedCards[index] ? 180 : 0 }}
-                                transition={{ duration: 0.6 }}
-                                style={{ transformStyle: 'preserve-3d' }}
-                            >
-                                {/* Front of Card */}
-                                <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-cyan-500/30 bg-gradient-to-br from-black to-blue-900 shadow-2xl shadow-cyan-500/20">
-                                    {/* Video Background */}
+                            <Card className="w-full h-full rounded-2xl" style={{ transformStyle: 'preserve-3d' }}>
+                                {/* Front */}
+                                <motion.div
+                                    className="absolute inset-0 rounded-2xl overflow-hidden p-0"
+                                    animate={{ rotateY: flippedCards[index] ? 180 : 0 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{ backfaceVisibility: 'hidden' }}
+                                >
                                     <div className="relative h-40 overflow-hidden">
-                                        <video
-                                            autoPlay
-                                            muted
-                                            loop
-                                            playsInline
-                                            className="w-full h-full object-cover"
-                                        >
+                                        <video autoPlay muted loop playsInline className="w-full h-full object-cover">
                                             <source src={service.video} type="video/mp4" />
-                                            Your browser does not support the video tag.
                                         </video>
-                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-
-                                        {/* Service Title */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                                         <div className="absolute bottom-4 left-4 z-10">
-                                            <h3 className="text-xl font-bold text-white">{service.title}</h3>
+                                            <h3 className="text-xl font-bold">{service.title}</h3>
                                             <div className="flex gap-1 mt-1">
                                                 {service.features.slice(0, 2).map((feature, i) => (
-                                                    <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded-full text-cyan-200">
-                                                        {feature}
-                                                    </span>
+                                                    <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded-full">{feature}</span>
                                                 ))}
                                             </div>
                                         </div>
                                     </div>
-
-                                    {/* Content */}
                                     <div className="p-5">
-                                        <p className="text-sm text-gray-300 mb-4 line-clamp-3">
-                                            {service.desc}
-                                        </p>
-
-                                        {/* Tools Preview */}
+                                        <p className="text-sm mb-4 line-clamp-3">{service.desc}</p>
                                         <div className="flex flex-wrap gap-2 mb-4">
                                             {service.tools.slice(0, 3).map((tool, i) => (
-                                                <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded text-cyan-200">
-                                                    {tool}
-                                                </span>
+                                                <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded">{tool}</span>
                                             ))}
-                                            {service.tools.length > 3 && (
-                                                <span className="text-xs text-cyan-400">+{service.tools.length - 3} more</span>
-                                            )}
+                                            {service.tools.length > 3 && <span className="text-xs">+{service.tools.length - 3} more</span>}
                                         </div>
-
-                                        {/* Flip Hint - Enhanced UI */}
-                                        <motion.div
-                                            className="flex items-center justify-center gap-2 p-3 bg-cyan-500/10 rounded-lg border border-cyan-500/30"
-                                            whileHover={{ scale: 1.05 }}
-                                            transition={{ duration: 0.2 }}
-                                        >
-                                            <div className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></div>
-                                            <span className="text-sm font-medium text-cyan-300">Click to see credentials</span>
-                                            <svg className="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
-                                            </svg>
-                                        </motion.div>
+                                        <Button variant="outline" className="w-full" onClick={(e) => e.stopPropagation()}>
+                                            Click to see credentials
+                                        </Button>
                                     </div>
+                                </motion.div>
 
-                                    {/* Gradient Border */}
-                                    <div className={`absolute inset-0 rounded-2xl bg-gradient-to-r ${service.color} p-[2px] -z-10 opacity-80`}>
-                                        <div className="bg-black rounded-2xl w-full h-full"></div>
+                                {/* Back */}
+                                <motion.div
+                                    className="absolute inset-0 rounded-2xl overflow-hidden p-5 flex flex-col"
+                                    animate={{ rotateY: flippedCards[index] ? 0 : 180 }}
+                                    transition={{ duration: 0.5 }}
+                                    style={{ backfaceVisibility: 'hidden', transform: 'rotateY(180deg)' }}
+                                >
+                                    <h4 className="text-lg font-bold mb-4">Service Details</h4>
+                                    <div className="mb-4">
+                                        <h5 className="text-sm font-semibold mb-2">What we deliver:</h5>
+                                        <ul className="space-y-1">
+                                            {service.features.map((feature, i) => (
+                                                <li key={i} className="text-xs flex items-start">
+                                                    <span className="mr-2">•</span>{feature}
+                                                </li>
+                                            ))}
+                                        </ul>
                                     </div>
-                                </div>
-
-                                {/* Back of Card (Details) */}
-                                <div className="absolute inset-0 backface-hidden rounded-2xl overflow-hidden border border-cyan-500/30 bg-gradient-to-br from-black to-blue-900 shadow-2xl shadow-cyan-500/20 rotate-y-180 p-5">
-                                    <div className="h-full flex flex-col">
-                                        <h4 className="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                                            <svg className="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                                            </svg>
-                                            Service Details
-                                        </h4>
-
-                                        {/* Features List */}
-                                        <div className="mb-4">
-                                            <h5 className="text-sm font-semibold text-cyan-300 mb-2">What we deliver:</h5>
-                                            <ul className="space-y-1">
-                                                {service.features.map((feature, i) => (
-                                                    <li key={i} className="text-xs text-gray-300 flex items-start">
-                                                        <span className="text-cyan-400 mr-2">•</span>
-                                                        {feature}
-                                                    </li>
-                                                ))}
-                                            </ul>
-                                        </div>
-
-                                        {/* Tools List */}
-                                        <div className="mb-4">
-                                            <h5 className="text-sm font-semibold text-cyan-300 mb-2">Technologies we use:</h5>
-                                            <div className="flex flex-wrap gap-1">
-                                                {service.tools.map((tool, i) => (
-                                                    <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded text-cyan-200">
-                                                        {tool}
-                                                    </span>
-                                                ))}
-                                            </div>
-                                        </div>
-
-                                        {/* Get Service Button */}
-                                        <motion.a
-                                            href="/contact"
-                                            whileHover={{ scale: 1.05 }}
-                                            whileTap={{ scale: 0.95 }}
-                                            className={`mt-auto bg-gradient-to-r ${service.color} text-white px-4 py-3 rounded-full font-semibold text-center block shadow-lg shadow-cyan-500/20`}
-                                            onClick={(e) => e.stopPropagation()}
-                                        >
-                                            Get This Service
-                                        </motion.a>
-
-                                        {/* Flip Back Hint */}
-                                        <div className="text-center text-xs text-cyan-400 mt-3 flex items-center justify-center gap-1">
-                                            <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7"></path>
-                                            </svg>
-                                            Click to flip back
+                                    <div className="mb-4">
+                                        <h5 className="text-sm font-semibold mb-2">Technologies we use:</h5>
+                                        <div className="flex flex-wrap gap-1">
+                                            {service.tools.map((tool, i) => (
+                                                <span key={i} className="text-xs bg-cyan-500/20 px-2 py-1 rounded">{tool}</span>
+                                            ))}
                                         </div>
                                     </div>
-                                </div>
-                            </motion.div>
-                        </motion.div>
+                                    <Button asChild className="mt-auto w-full">
+                                        <a href="/contact" onClick={(e) => e.stopPropagation()}>Get This Service</a>
+                                    </Button>
+                                </motion.div>
+                            </Card>
+                        </div>
                     ))}
                 </div>
-
-                {/* CTA Section */}
-                <motion.div
-                    className="text-center mt-20"
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: false }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                >
-                    <h3 className="text-2xl md:text-3xl font-bold mb-4 text-white">
-                        Ready to Transform Your Business?
-                    </h3>
-                    <p className="max-w-2xl mx-auto mb-8 text-white/80">
-                        Let's discuss how our services can help you achieve your goals and drive innovation.
-                    </p>
-                    <motion.a
-                        href="/contact"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="inline-flex items-center gap-3 bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-cyan-500/30"
-                    >
-                        Start Your Project Today
-                        <motion.span
-                            animate={{ x: [0, 5, 0] }}
-                            transition={{ repeat: Infinity, duration: 1.5 }}
-                        >
-                            →
-                        </motion.span>
-                    </motion.a>
-                </motion.div>
-
-                {/* Background Orbs */}
-                <motion.div
-                    className="absolute -top-20 -left-20 w-80 h-80 rounded-full bg-cyan-500/20 blur-3xl"
-                    animate={{ scale: [1, 1.2, 1] }}
-                    transition={{ duration: 8, repeat: Infinity }}
-                />
-                <motion.div
-                    className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-blue-500/20 blur-3xl"
-                    animate={{ scale: [1.2, 1, 1.2] }}
-                    transition={{ duration: 10, repeat: Infinity }}
-                />
             </section>
+
+            <style jsx>{`
+        @keyframes backgroundMove {
+          0% { background-position: 0 0; }
+          100% { background-position: 50px 50px; }
+        }
+      `}</style>
         </>
     );
 }

@@ -27,20 +27,6 @@ const LoadingScreen = ({ onComplete }) => {
         <span className="animate-blink text-blue-500">|</span>
       </div> */}
 
-      {/* progress bar */}
-
-      <div className="mt-4">
-        {[
-          "bg-blue-100", "bg-blue-200", "bg-blue-300", "bg-blue-400",
-          "bg-blue-500", "bg-blue-600", "bg-blue-700", "bg-blue-800"
-        ].map((color, i) => (
-          <div
-            key={i}
-            className={`absolute w-3 h-3 rounded-full ${color} shadow-[0_0_10px] animate-circle${i + 1}`}
-          ></div>
-        ))}
-      </div>
-
 
     </div >
   );

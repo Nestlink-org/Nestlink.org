@@ -1,9 +1,8 @@
 // components/home/HeroSection.jsx
 'use client';
 
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useAnimation, useScroll } from 'framer-motion';
 import { useEffect } from 'react';
-import { useScroll } from 'framer-motion';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -42,8 +41,8 @@ export default function HeroSection() {
                     className="lg:w-1/2"
                 >
                     <h1 className="text-5xl font-bold relative z-10">
-                        @<span>Nest</span>
-                        <span className="text-primary">Link</span>.Org
+                        <span className="text-foreground">Nest</span>
+                        <span className="text-primary">Link</span>
                     </h1>
 
                     <motion.h1
@@ -54,7 +53,7 @@ export default function HeroSection() {
                         className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                     >
                         <span className="block">Organisations built</span>
-                        <span className="block text-gradient">for the 3D future</span>
+                        <span className="block text-primary">for the 3D future</span>
                     </motion.h1>
 
                     <motion.p
@@ -85,8 +84,6 @@ export default function HeroSection() {
                                 </Button>
                             </Link>
                         </motion.div>
-
-                        <Button size="lg" variant="secondary">Hello</Button>
                     </div>
                 </motion.div>
 
@@ -96,7 +93,7 @@ export default function HeroSection() {
                     whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.8 }}
-                    className="lg:w-1/2 flex justify-center"
+                    className="lg:w-1/2 flex justify-center mt-5"
                 >
                     <motion.div
                         animate={videoControls}

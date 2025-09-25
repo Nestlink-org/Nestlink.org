@@ -37,6 +37,9 @@
   --sidebar-accent-foreground: oklch(0.2050 0 0);
   --sidebar-border: oklch(0.9220 0 0);
   --sidebar-ring: oklch(0.7080 0 0);
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0.625rem;
   --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
@@ -83,7 +86,9 @@
   --sidebar-accent-foreground: oklch(0.9850 0 0);
   --sidebar-border: oklch(0.2750 0 0);
   --sidebar-ring: oklch(0.4390 0 0);
-
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
   --radius: 0.625rem;
   --shadow-2xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
   --shadow-xs: 0 1px 3px 0px hsl(0 0% 0% / 0.05);
@@ -129,7 +134,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
 
-
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+  --font-serif: var(--font-serif);
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -167,77 +174,4 @@ body {
     background-position: 0% 50%;
   }
 }
-
-/* ************************************************************loading animation****************************************************** */
-/* Pulsing glow */
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px currentColor;
-  }
-  50% {
-    transform: scale(1.4);
-    box-shadow: 0 0 25px currentColor;
-  }
-}
-/* Pulsing glow */
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    box-shadow: 0 0 10px currentColor;
-  }
-  50% {
-    transform: scale(1.4);
-    box-shadow: 0 0 25px currentColor;
-  }
-}
-/* Circular motion with pause at starting point */
-@keyframes circle {
-
-  0%,
-  50% {
-    /* Pause at starting point for 5% of animation */
-    transform: rotate(0deg) translateX(200%) rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg) translateX(200%) rotate(-360deg);
-  }
-}
-
-/* Apply animations with staggered delays */
-.animate-circle1 {
-  animation: circle 2.5s linear infinite, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle2 {
-  animation: circle 2.5s linear infinite 0.15s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle3 {
-  animation: circle 2.5s linear infinite 0.3s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle4 {
-  animation: circle 2.5s linear infinite 0.45s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle5 {
-  animation: circle 2.5s linear infinite 0.6s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle6 {
-  animation: circle 2.5s linear infinite 0.75s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle7 {
-  animation: circle 2.5s linear infinite 0.9s, pulse 1.2s ease-in-out infinite;
-}
-
-.animate-circle8 {
-  animation: circle 2.5s linear infinite 1.05s, pulse 1.2s ease-in-out infinite;
-}
-
 

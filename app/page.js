@@ -13,7 +13,7 @@ export default function MainPage() {
     const timer = setTimeout(() => {
       if (!isLoading) return;
       setIsLoading(false);
-    }, 7000);
+    }, 6000);
 
     return () => clearTimeout(timer);
   }, [isLoading]);

@@ -87,12 +87,13 @@ export default function HeroSection() {
                 </motion.div>
 
                 {/* RIGHT: Video Card */}
+
                 <motion.div
                     initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
                     whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.4 }} // faster
-                    className="lg:w-1/2 flex justify-center mt-5"
+                    transition={{ duration: 0.4 }}
+                    className="lg:w-1/2 flex justify-center mt-5  "
                 >
                     <motion.div
                         animate={videoControls}
@@ -100,11 +101,13 @@ export default function HeroSection() {
                     >
                         <motion.div
                             whileHover={{ rotateY: 8, scale: 1.02 }}
-                            transition={{ type: 'spring', stiffness: 300, damping: 15 }} // faster & snappier
-                            className="rounded-2xl shadow-2xl bg-card border p-6"
+                            transition={{ type: 'spring', stiffness: 300, damping: 15 }}
+                            className="rounded-2xl shadow-2xl bg-card border border-white"
                         >
                             {/* autoplaying local tech video */}
-                            <div className="aspect-[16/9] rounded-xl overflow-hidden bg-muted flex items-center justify-center">
+                            <div className="overflow-hidden rounded-xl bg-muted flex items-center justify-center
+                      aspect-[16/9] 
+                      max-h-64 sm:max-h-80 md:max-h-96 lg:max-h-[24rem]">
                                 <video
                                     className="w-full h-full object-cover"
                                     src="/video.mp4"
@@ -117,7 +120,7 @@ export default function HeroSection() {
                                 </video>
                             </div>
 
-                            <div className="mt-4 flex justify-between items-center">
+                            <div className="flex justify-between items-center mt-2 px-2">
                                 <div className="text-sm text-muted-foreground">
                                     Realtime metrics
                                 </div>
@@ -125,6 +128,7 @@ export default function HeroSection() {
                         </motion.div>
                     </motion.div>
                 </motion.div>
+
             </div>
         </section>
     );

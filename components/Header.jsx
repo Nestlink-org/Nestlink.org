@@ -35,17 +35,20 @@ const Header = () => {
         <motion.header
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 500, damping: 25 }} // faster animation
+            transition={{ type: 'spring', stiffness: 500, damping: 25 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200
-        ${isScrolled ? 'backdrop-blur-md py-3 bg-background/70 dark:bg-background-dark/80' : 'bg-transparent py-5'}
-      `}
+                ${isScrolled
+                    ? 'backdrop-blur-md py-3 bg-[lightblue] dark:bg-black'
+                    : 'bg-[lightblue] dark:bg-transparent py-5'
+                }
+            `}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
                 <motion.div
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 25 }} // faster
+                    transition={{ type: 'spring', stiffness: 500, damping: 25 }}
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center space-x-2"
                 >
@@ -53,7 +56,7 @@ const Header = () => {
                 </motion.div>
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex space-x-8 text-base font-medium px-6 py-3 rounded-[20px] backdrop-blur-sm bg-background/50 dark:bg-background-dark/10">
+                <nav className="hidden md:flex space-x-8 text-base font-medium px-6 py-3 rounded-[20px] backdrop-blur-sm bg-gray-100/50 dark:bg-gray-900/10">
                     {navItems.map((item) => {
                         const isActive = pathname === item.path;
                         return (
@@ -66,8 +69,11 @@ const Header = () => {
                                 <Link
                                     href={item.path}
                                     className={`transition-colors duration-150 relative
-                    ${isActive ? 'text-primary dark:text-primary-dark' : 'text-foreground hover:text-primary dark:hover:text-primary-dark'}
-                  `}
+                                        ${isActive
+                                            ? 'text-primary dark:text-primary-dark'
+                                            : 'text-foreground hover:text-primary dark:hover:text-primary-dark'
+                                        }
+                                    `}
                                 >
                                     {item.name}
                                 </Link>
@@ -85,7 +91,6 @@ const Header = () => {
 
                 {/* Theme Toggle + Contact + Hamburger */}
                 <div className="flex items-center space-x-4">
-                    {/* Theme Toggle with icons */}
                     {mounted && (
                         <motion.div whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
                             <Sun className="w-5 h-5 text-sky-400 dark:text-sky-500 transition-colors duration-150" />
@@ -97,12 +102,10 @@ const Header = () => {
                         </motion.div>
                     )}
 
-                    {/* Contact Button */}
                     <Link href="/contact" className="hidden md:block">
                         <Button variant="outline">{'Contact Us'}</Button>
                     </Link>
 
-                    {/* Hamburger for mobile */}
                     <motion.button
                         onClick={() => setMenuOpen(!menuOpen)}
                         className="md:hidden text-foreground text-3xl"
@@ -121,8 +124,8 @@ const Header = () => {
                         initial={{ y: -200, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -200, opacity: 0 }}
-                        transition={{ duration: 0.15 }} // faster menu animation
-                        className="md:hidden absolute top-full left-0 right-0 bg-background/90 dark:bg-background-dark/90 backdrop-blur-md shadow-lg p-6 space-y-6 text-center"
+                        transition={{ duration: 0.15 }}
+                        className="md:hidden absolute top-full left-0 right-0 bg-gray-100/90 dark:bg-gray-900/90 backdrop-blur-md shadow-lg p-6 space-y-6 text-center"
                     >
                         {navItems.map((item) => {
                             const isActive = pathname === item.path;
@@ -131,8 +134,8 @@ const Header = () => {
                                     key={item.path}
                                     href={item.path}
                                     className={`block text-lg font-semibold transition-colors duration-150
-                    ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}
-                  `}
+                                        ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}
+                                    `}
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     {item.name}

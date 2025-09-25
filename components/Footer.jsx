@@ -10,12 +10,12 @@ export default function Footer() {
 
             {/* Floating 3D accent shapes */}
             <motion.div
-                className="absolute w-32 h-32 bg-blue-600 rounded-full blur-3xl top-10 left-10"
+                className="absolute w-32 h-32 bg-[lightblue] rounded-full blur-3xl top-10 left-10"
                 animate={{ x: [0, 10, 0], y: [0, -10, 0], rotate: [0, 180, 0] }}
                 transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
             />
             <motion.div
-                className="absolute w-20 h-20 bg-purple-500 rounded-full blur-2xl bottom-20 right-20"
+                className="absolute w-20 h-20 bg-[lightblue]  rounded-full blur-2xl bottom-20 right-20"
                 animate={{ x: [0, -8, 0], y: [0, 8, 0], rotate: [0, -180, 0] }}
                 transition={{ repeat: Infinity, duration: 12, ease: 'easeInOut' }}
             />

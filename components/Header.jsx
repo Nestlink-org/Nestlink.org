@@ -35,7 +35,7 @@ const Header = () => {
                 transition={{ type: 'spring', stiffness: 100, damping: 20 }}
                 className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
           ${isScrolled
-                        ? 'backdrop-blur-md shadow-lg py-3 bg-black/80 dark:bg-black/80'
+                        ? 'backdrop-blur-md py-3 bg-black/80 dark:bg-black/80'
                         : 'bg-transparent py-5'}
         `}
             >
@@ -55,8 +55,7 @@ const Header = () => {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex space-x-8 text-base font-medium p-4 rounded-[20px]
-            bg-gradient-to-r from-[#030363] via-black to-blue-600
-            shadow-[0_4px_15px_white]">
+            bg-gradient-to-r from-[#030363] via-black to-blue-600">
                         {navItems.map((item) => {
                             const isActive = pathname === item.path;
                             return (
@@ -165,8 +164,6 @@ const Header = () => {
                 </AnimatePresence>
             </motion.header>
 
-            {/* Spacer div to push content down (so it's not hidden by fixed header) */}
-            <div className="mb-24"></div>
         </>
     );
 };

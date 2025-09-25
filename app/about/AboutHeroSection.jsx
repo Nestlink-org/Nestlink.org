@@ -29,8 +29,10 @@ export default function AboutHeroSection() {
         };
     }, []);
 
-    // Connect to your theme context
+    // Connect to your theme context (guarded for SSR)
     useEffect(() => {
+        if (typeof window === 'undefined') return; // ✅ prevents SSR crash
+
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         setIsDarkMode(mediaQuery.matches);
 
@@ -76,11 +78,14 @@ export default function AboutHeroSection() {
             {/* Background Elements */}
             <div className="absolute inset-0">
                 {/* Grid overlay */}
-                <div className="absolute inset-0 opacity-20" style={{
-                    backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
-                                    linear-gradient(to bottom, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
-                    backgroundSize: '50px 50px'
-                }}></div>
+                <div
+                    className="absolute inset-0 opacity-20"
+                    style={{
+                        backgroundImage: `linear-gradient(to right, rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+                                        linear-gradient(to bottom, rgba(59, 130, 246, 0.3) 1px, transparent 1px)`,
+                        backgroundSize: '50px 50px',
+                    }}
+                ></div>
 
                 {/* Floating particles */}
                 <FloatingParticles />
@@ -105,13 +110,17 @@ export default function AboutHeroSection() {
                     <motion.h1
                         className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-white"
                         initial={{ opacity: 0, y: -40, letterSpacing: '1rem' }}
-                        animate={isTitleInView ?
-                            { opacity: 1, y: 0, letterSpacing: '0.05em' } :
-                            { opacity: 0, y: -40, letterSpacing: '1rem' }
+                        animate={
+                            isTitleInView
+                                ? { opacity: 1, y: 0, letterSpacing: '0.05em' }
+                                : { opacity: 0, y: -40, letterSpacing: '1rem' }
                         }
-                        transition={{ duration: 1.2, ease: "easeOut" }}
+                        transition={{ duration: 1.2, ease: 'easeOut' }}
                     >
-                        DISCOVER <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">NestLink</span>
+                        DISCOVER{' '}
+                        <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                            NestLink
+                        </span>
                     </motion.h1>
                 </div>
 
@@ -124,7 +133,11 @@ export default function AboutHeroSection() {
                     className="mt-8 max-w-4xl mx-auto"
                 >
                     <p className="text-xl md:text-2xl text-white/80 leading-relaxed">
-                        At <span className="font-semibold text-cyan-400">NestLink</span>, we merge cutting-edge technology with boundless creativity to deliver intelligent digital solutions that empower businesses globally. Our philosophy is innovation-driven and people-first.
+                        At{' '}
+                        <span className="font-semibold text-cyan-400">NestLink</span>, we
+                        merge cutting-edge technology with boundless creativity to
+                        deliver intelligent digital solutions that empower businesses
+                        globally. Our philosophy is innovation-driven and people-first.
                     </p>
 
                     {/* Stats Bar */}
@@ -136,21 +149,27 @@ export default function AboutHeroSection() {
                         transition={{ delay: 0.6, duration: 0.8 }}
                     >
                         <div className="text-center">
-                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">150+</div>
+                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">
+                                150+
+                            </div>
                             <div className="text-sm text-white/60 mt-1">Projects</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">98%</div>
+                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">
+                                98%
+                            </div>
                             <div className="text-sm text-white/60 mt-1">Success Rate</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">5+</div>
+                            <div className="text-3xl md:text-4xl font-bold text-cyan-400">
+                                5+
+                            </div>
                             <div className="text-sm text-white/60 mt-1">Years</div>
                         </div>
                     </motion.div>
                 </motion.div>
 
-                {/* Animated CTA Buttons */}
+                {/* CTA Buttons */}
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -162,7 +181,8 @@ export default function AboutHeroSection() {
                         <motion.button
                             whileHover={{
                                 scale: 1.05,
-                                boxShadow: "0 10px 25px -5px rgba(34, 211, 238, 0.4)"
+                                boxShadow:
+                                    '0 10px 25px -5px rgba(34, 211, 238, 0.4)',
                             }}
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 rounded-full bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold text-lg shadow-lg relative overflow-hidden group"
@@ -181,7 +201,8 @@ export default function AboutHeroSection() {
                         <motion.button
                             whileHover={{
                                 scale: 1.05,
-                                boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)"
+                                boxShadow:
+                                    '0 10px 25px -5px rgba(59, 130, 246, 0.4)',
                             }}
                             whileTap={{ scale: 0.95 }}
                             className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-700 to-indigo-700 text-white font-semibold text-lg shadow-lg border border-blue-500/30 relative overflow-hidden group"
@@ -205,7 +226,9 @@ export default function AboutHeroSection() {
                     transition={{ delay: 1.2, duration: 1 }}
                     className="mt-20 flex flex-col items-center"
                 >
-                    <span className="text-white/60 text-sm mb-2">Scroll to explore</span>
+                    <span className="text-white/60 text-sm mb-2">
+                        Scroll to explore
+                    </span>
                     <motion.div
                         animate={{ y: [0, 10, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
@@ -220,7 +243,7 @@ export default function AboutHeroSection() {
                 </motion.div>
             </div>
 
-            {/* Animated Background Shapes */}
+            {/* Background Shapes */}
             <motion.div
                 className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-cyan-400/10 blur-xl"
                 animate={{

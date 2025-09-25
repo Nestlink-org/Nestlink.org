@@ -8,7 +8,7 @@ export default function AboutPhilosophy() {
     const canvasRef = useRef(null);
 
     useEffect(() => {
-        if (!canvasRef.current) return;
+        if (typeof window === 'undefined' || !canvasRef.current) return;
 
         // Scene setup
         const scene = new THREE.Scene();
@@ -22,7 +22,7 @@ export default function AboutPhilosophy() {
         renderer.setSize(400, 400);
         renderer.setClearColor(0x000000, 0);
 
-        // Lighting
+        // Lights
         const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
         scene.add(ambientLight);
 
@@ -34,12 +34,11 @@ export default function AboutPhilosophy() {
         pointLight.position.set(-5, -5, 5);
         scene.add(pointLight);
 
-        // Create a network of interconnected nodes (the "Nest")
+        // Nodes
         const nodes = [];
         const connections = [];
         const nodeCount = 30;
 
-        // Create nodes
         for (let i = 0; i < nodeCount; i++) {
             const geometry = new THREE.SphereGeometry(0.3, 16, 16);
             const material = new THREE.MeshPhongMaterial({
@@ -51,7 +50,6 @@ export default function AboutPhilosophy() {
 
             const node = new THREE.Mesh(geometry, material);
 
-            // Position nodes in a spherical formation
             const radius = 5;
             const theta = Math.random() * Math.PI * 2;
             const phi = Math.acos((Math.random() * 2) - 1);
@@ -69,15 +67,13 @@ export default function AboutPhilosophy() {
             });
         }
 
-        // Create connections between nodes
+        // Connections
         for (let i = 0; i < nodes.length; i++) {
             for (let j = i + 1; j < nodes.length; j++) {
                 if (Math.random() > 0.7) {
                     const distance = nodes[i].mesh.position.distanceTo(nodes[j].mesh.position);
-
                     if (distance < 8) {
                         const geometry = new THREE.CylinderGeometry(0.05, 0.05, distance, 8);
-                        geometry.rotateZ(Math.PI / 2);
                         const material = new THREE.MeshPhongMaterial({
                             color: new THREE.Color().setHSL(Math.random() * 0.1 + 0.6, 0.8, 0.7),
                             transparent: true,
@@ -85,12 +81,8 @@ export default function AboutPhilosophy() {
                         });
 
                         const connection = new THREE.Mesh(geometry, material);
-
-                        // Position the connection between the two nodes
                         connection.position.copy(nodes[i].mesh.position);
                         connection.position.lerp(nodes[j].mesh.position, 0.5);
-
-                        // Orient the connection to point at the second node
                         connection.lookAt(nodes[j].mesh.position);
 
                         scene.add(connection);
@@ -100,28 +92,25 @@ export default function AboutPhilosophy() {
             }
         }
 
-        // Add central core element
+        // Core
         const coreGeometry = new THREE.IcosahedronGeometry(1.5, 2);
         const coreMaterial = new THREE.MeshPhongMaterial({
             color: 0x4fb2d6,
             emissive: 0x1a5276,
             specular: 0xffffff,
             shininess: 100,
-            wireframe: false,
             transparent: true,
             opacity: 0.9
         });
         const core = new THREE.Mesh(coreGeometry, coreMaterial);
         scene.add(core);
 
-        // Position camera
         camera.position.z = 12;
 
-        // Animation
+        // Animate
         const animate = () => {
             requestAnimationFrame(animate);
 
-            // Animate nodes
             nodes.forEach(node => {
                 node.angle += node.speed;
                 node.mesh.position.x = node.originalPosition.x + Math.sin(node.angle) * 0.5;
@@ -132,11 +121,8 @@ export default function AboutPhilosophy() {
                 node.mesh.rotation.y += 0.01;
             });
 
-            // Animate core
             core.rotation.x += 0.005;
             core.rotation.y += 0.008;
-
-            // Pulse core scale
             core.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.1);
 
             renderer.render(scene, camera);
@@ -144,12 +130,11 @@ export default function AboutPhilosophy() {
 
         animate();
 
-        // Handle resize
+        // Resize
         const handleResize = () => {
             if (canvasRef.current) {
                 const width = Math.min(400, window.innerWidth - 40);
                 const height = width;
-
                 camera.aspect = width / height;
                 camera.updateProjectionMatrix();
                 renderer.setSize(width, height);
@@ -168,6 +153,7 @@ export default function AboutPhilosophy() {
     return (
         <section className="py-20 px-6 w-4/5 mx-auto">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+
                 {/* 3D Visualization */}
                 <motion.div
                     initial={{ opacity: 0, x: -50, rotateY: 90 }}
@@ -185,8 +171,6 @@ export default function AboutPhilosophy() {
                                 backdropFilter: 'blur(10px)'
                             }}
                         />
-
-                        {/* Animated glow effect */}
                         <motion.div
                             className="absolute inset-0 rounded-2xl pointer-events-none z-[-1]"
                             animate={{
@@ -212,7 +196,6 @@ export default function AboutPhilosophy() {
                     <motion.h2
                         initial={{ opacity: 0, y: -30, rotateX: -10 }}
                         whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ duration: 1 }}
                         className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6"
                     >
@@ -222,7 +205,6 @@ export default function AboutPhilosophy() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: false, amount: 0.2 }}
                         transition={{ delay: 0.2, duration: 1 }}
                         className="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed space-y-6"
                     >
@@ -233,6 +215,7 @@ export default function AboutPhilosophy() {
                             we forge between ideas, technology, and people.
                         </p>
 
+                        {/* Mission */}
                         <div className="pl-6 border-l-4 border-blue-400 dark:border-blue-600">
                             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Our Mission</h3>
                             <p>
@@ -242,6 +225,7 @@ export default function AboutPhilosophy() {
                             </p>
                         </div>
 
+                        {/* Vision */}
                         <div className="pl-6 border-l-4 border-orange-400 dark:border-orange-600">
                             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Our Vision</h3>
                             <p>
@@ -251,6 +235,7 @@ export default function AboutPhilosophy() {
                             </p>
                         </div>
 
+                        {/* Objectives */}
                         <div className="pl-6 border-l-4 border-teal-400 dark:border-teal-600">
                             <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-100 mb-2">Our Objectives</h3>
                             <ul className="list-disc pl-5 space-y-2">

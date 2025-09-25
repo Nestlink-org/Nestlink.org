@@ -35,8 +35,8 @@ const Header = () => {
         <motion.header
             initial={{ y: -100 }}
             animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 100, damping: 20 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300
+            transition={{ type: 'spring', stiffness: 500, damping: 25 }} // faster animation
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200
         ${isScrolled ? 'backdrop-blur-md py-3 bg-background/70 dark:bg-background-dark/80' : 'bg-transparent py-5'}
       `}
         >
@@ -45,7 +45,7 @@ const Header = () => {
                 <motion.div
                     initial={{ scale: 0, rotate: -180 }}
                     animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+                    transition={{ type: 'spring', stiffness: 500, damping: 25 }} // faster
                     whileTap={{ scale: 0.95 }}
                     className="flex items-center space-x-2"
                 >
@@ -59,13 +59,13 @@ const Header = () => {
                         return (
                             <motion.div
                                 key={item.path}
-                                whileHover={{ scale: 1.05, y: -1 }}
+                                whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
                                 className="relative"
                             >
                                 <Link
                                     href={item.path}
-                                    className={`transition-colors duration-300 relative
+                                    className={`transition-colors duration-150 relative
                     ${isActive ? 'text-primary dark:text-primary-dark' : 'text-foreground hover:text-primary dark:hover:text-primary-dark'}
                   `}
                                 >
@@ -75,7 +75,7 @@ const Header = () => {
                                     <motion.div
                                         layoutId="activeLink"
                                         className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"
-                                        transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                                        transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                                     />
                                 )}
                             </motion.div>
@@ -88,12 +88,12 @@ const Header = () => {
                     {/* Theme Toggle with icons */}
                     {mounted && (
                         <motion.div whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
-                            <Sun className="w-5 h-5 text-sky-400 dark:text-sky-500 transition-colors duration-300" />
+                            <Sun className="w-5 h-5 text-sky-400 dark:text-sky-500 transition-colors duration-150" />
                             <Switch
                                 checked={theme === 'dark'}
                                 onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
                             />
-                            <Moon className="w-5 h-5 text-blue-400 dark:text-blue-300 transition-colors duration-300" />
+                            <Moon className="w-5 h-5 text-blue-400 dark:text-blue-300 transition-colors duration-150" />
                         </motion.div>
                     )}
 
@@ -106,7 +106,7 @@ const Header = () => {
                     <motion.button
                         onClick={() => setMenuOpen(!menuOpen)}
                         className="md:hidden text-foreground text-3xl"
-                        whileTap={{ scale: 0.8 }}
+                        whileTap={{ scale: 0.85 }}
                         aria-label="Toggle menu"
                     >
                         {menuOpen ? '✖' : '☰'}
@@ -121,7 +121,7 @@ const Header = () => {
                         initial={{ y: -200, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: -200, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.15 }} // faster menu animation
                         className="md:hidden absolute top-full left-0 right-0 bg-background/90 dark:bg-background-dark/90 backdrop-blur-md shadow-lg p-6 space-y-6 text-center"
                     >
                         {navItems.map((item) => {
@@ -130,7 +130,7 @@ const Header = () => {
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className={`block text-lg font-semibold transition-colors
+                                    className={`block text-lg font-semibold transition-colors duration-150
                     ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}
                   `}
                                     onClick={() => setMenuOpen(false)}

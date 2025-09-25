@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
 import { useState, useEffect, useRef } from 'react';
 
 const items = [
@@ -45,157 +46,101 @@ const items = [
 export default function InnovationSpotlight() {
     const titleRef = useRef();
     const [isTitleInView, setIsTitleInView] = useState(false);
-    const [isDarkMode, setIsDarkMode] = useState(true);
 
-    // Detect theme changes (you would connect this to your actual theme toggle)
-    useEffect(() => {
-        // This is a placeholder - connect to your actual theme context
-        const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-        setIsDarkMode(mediaQuery.matches);
-
-        const handler = (e) => setIsDarkMode(e.matches);
-        mediaQuery.addEventListener('change', handler);
-
-        return () => mediaQuery.removeEventListener('change', handler);
-    }, []);
-
-    // Set up intersection observer for the title
     useEffect(() => {
         const observer = new IntersectionObserver(
-            ([entry]) => {
-                setIsTitleInView(entry.isIntersecting);
-            },
+            ([entry]) => setIsTitleInView(entry.isIntersecting),
             { threshold: 0.5 }
         );
-
-        if (titleRef.current) {
-            observer.observe(titleRef.current);
-        }
-
-        return () => {
-            if (titleRef.current) {
-                observer.unobserve(titleRef.current);
-            }
-        };
+        if (titleRef.current) observer.observe(titleRef.current);
+        return () => titleRef.current && observer.unobserve(titleRef.current);
     }, []);
-
-    // Theme-aware colors
-    const textColor = isDarkMode ? 'text-gray-100' : 'text-gray-800';
-    const secondaryTextColor = isDarkMode ? 'text-gray-400' : 'text-gray-600';
-    const borderColor = isDarkMode ? 'border-gray-700' : 'border-gray-200';
-    const cardBg = isDarkMode ? 'bg-gray-800/50' : 'bg-white/80';
-    const hoverBg = isDarkMode ? 'hover:bg-gray-700/30' : 'hover:bg-gray-100/80';
 
     return (
         <section className="py-16 container mx-auto px-6 relative">
-            {/* Section Heading with repeating animation */}
+            {/* Section Heading */}
             <div ref={titleRef} className="mb-12">
                 <motion.h3
-                    className={`text-3xl md:text-4xl font-bold text-center mb-4 ${textColor}`}
+                    className="text-3xl md:text-4xl font-bold text-center mb-4 text-foreground"
                     initial={{ opacity: 0, y: -20 }}
-                    animate={isTitleInView ?
-                        { opacity: 1, y: 0 } :
-                        { opacity: 0, y: -20 }
-                    }
+                    animate={isTitleInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
                     transition={{ duration: 0.8, ease: "easeOut" }}
                 >
                     Innovation Documentation
                 </motion.h3>
-                <p className={`text-center max-w-2xl mx-auto ${secondaryTextColor}`}>
+                <p className="text-center max-w-2xl mx-auto text-muted-foreground">
                     Detailed overview of our core technological innovations and capabilities
                 </p>
             </div>
 
-            {/* Document-style content */}
-            <div className="max-w-4xl mx-auto">
+            <div className="max-w-4xl mx-auto space-y-6">
                 {/* Introduction */}
                 <motion.div
-                    className={`p-6 rounded-lg ${cardBg} border ${borderColor} mb-8 backdrop-blur-sm`}
+                    className="p-6 rounded-lg border bg-background/50 border-border backdrop-blur-sm"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6 }}
                 >
-                    <h4 className={`text-xl font-semibold mb-3 ${textColor}`}>Overview</h4>
-                    <p className={secondaryTextColor}>
+                    <h4 className="text-xl font-semibold mb-3 text-foreground">Overview</h4>
+                    <p className="text-muted-foreground">
                         Our innovation portfolio represents cutting-edge solutions designed to address modern
                         technological challenges. Each innovation is thoroughly documented with features,
                         use cases, and implementation guidelines.
                     </p>
                 </motion.div>
 
-                {/* Innovation items in document format */}
-                <div className="space-y-6">
-                    {items.map((it, i) => (
-                        <motion.div
-                            key={it.title}
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: false, amount: 0.3 }}
-                            transition={{ delay: i * 0.1, duration: 0.6 }}
-                            className={`p-6 rounded-lg ${cardBg} border ${borderColor} backdrop-blur-sm ${hoverBg} transition-all duration-300`}
-                        >
-                            {/* Header with icon and title */}
-                            <div className="flex items-start gap-4 mb-4">
-                                <span className="text-3xl flex-shrink-0">{it.icon}</span>
-                                <div>
-                                    <h4 className={`text-xl font-semibold ${textColor}`}>{it.title}</h4>
-                                    <p className={`mt-1 ${secondaryTextColor}`}>{it.desc}</p>
-                                </div>
+                {/* Innovation items */}
+                {items.map((it, i) => (
+                    <motion.div
+                        key={it.title}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: false, amount: 0.3 }}
+                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                        className="p-6 rounded-lg border bg-background/50 border-border backdrop-blur-sm"
+                    >
+                        <div className="flex items-start gap-4 mb-4">
+                            <span className="text-3xl flex-shrink-0">{it.icon}</span>
+                            <div>
+                                <h4 className="text-xl font-semibold text-foreground">{it.title}</h4>
+                                <p className="mt-1 text-muted-foreground">{it.desc}</p>
                             </div>
+                        </div>
+                        <div className="ml-12">
+                            <h5 className="font-medium mb-2 text-foreground">Key Features:</h5>
+                            <ul className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm text-muted-foreground">
+                                {it.features.map((f, idx) => (
+                                    <li key={idx} className="flex items-start gap-2">
+                                        <span className="text-green-500 mt-1">•</span>
+                                        {f}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                        <div className="mt-4 pt-4 border-t border-border flex justify-between items-center text-xs text-muted-foreground">
+                            <span>Last updated: {new Date().toLocaleDateString()}</span>
+                            <span>Status: <span className="text-green-500">Active</span></span>
+                        </div>
+                    </motion.div>
+                ))}
 
-                            {/* Features list */}
-                            <div className="ml-12">
-                                <h5 className={`font-medium mb-2 ${textColor}`}>Key Features:</h5>
-                                <ul className={`grid grid-cols-1 md:grid-cols-2 gap-2 ${secondaryTextColor} text-sm`}>
-                                    {it.features.map((feature, idx) => (
-                                        <li key={idx} className="flex items-start gap-2">
-                                            <span className="text-green-500 mt-1">•</span>
-                                            {feature}
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
-
-                            {/* Metadata footer */}
-                            <div className={`mt-4 pt-4 border-t ${borderColor} flex justify-between items-center text-xs ${secondaryTextColor}`}>
-                                <span>Last updated: {new Date().toLocaleDateString()}</span>
-                                <span>Status: <span className="text-green-500">Active</span></span>
-                            </div>
-                        </motion.div>
-                    ))}
-                </div>
-
-                {/* Documentation footer */}
+                {/* Footer */}
                 <motion.div
-                    className={`p-6 rounded-lg ${cardBg} border ${borderColor} mt-8 backdrop-blur-sm`}
+                    className="p-6 rounded-lg border bg-background/50 border-border backdrop-blur-sm flex flex-wrap gap-4"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                 >
-                    <h4 className={`text-xl font-semibold mb-3 ${textColor}`}>Implementation Guidelines</h4>
-                    <p className={`mb-4 ${secondaryTextColor}`}>
-                        Each innovation comes with comprehensive documentation, API references, and integration guides.
-                        Our technical team provides support throughout the implementation process.
-                    </p>
-                    <div className="flex flex-wrap gap-4">
-                        <button className={`px-4 py-2 rounded border ${borderColor} ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-colors ${textColor}`}>
-                            View API Docs
-                        </button>
-                        <button className={`px-4 py-2 rounded border ${borderColor} ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-colors ${textColor}`}>
-                            Download Whitepaper
-                        </button>
-                        <button className={`px-4 py-2 rounded border ${borderColor} ${isDarkMode ? 'bg-gray-700 hover:bg-gray-600' : 'bg-gray-100 hover:bg-gray-200'} transition-colors ${textColor}`}>
-                            Request Demo
-                        </button>
-                    </div>
+                    <Button>View API Docs</Button>
+                    <Button>Download Whitepaper</Button>
+                    <Button>Request Demo</Button>
                 </motion.div>
             </div>
 
-            {/* Version info */}
             <motion.div
-                className={`text-center mt-12 text-xs ${secondaryTextColor}`}
+                className="text-center mt-12 text-xs text-muted-foreground"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false }}

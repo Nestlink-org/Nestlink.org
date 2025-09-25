@@ -1,4 +1,3 @@
-// components/home/HeroSection.jsx
 'use client';
 
 import { motion, useAnimation, useScroll } from 'framer-motion';
@@ -10,18 +9,18 @@ export default function HeroSection() {
     const videoControls = useAnimation();
     const { scrollYProgress } = useScroll();
 
-    // Zoom video in/out on scroll
+    // Zoom video in/out on scroll (faster)
     useEffect(() => {
-        const unsubscribe = scrollYProgress.on("change", (progress) => {
+        const unsubscribe = scrollYProgress.on('change', (progress) => {
             if (progress > 0.2) {
                 videoControls.start({
                     scale: 1.1,
-                    transition: { duration: 0.8, ease: 'easeOut' }
+                    transition: { duration: 0.4, ease: 'easeOut' } // faster
                 });
             } else {
                 videoControls.start({
                     scale: 1,
-                    transition: { duration: 0.8, ease: 'easeIn' }
+                    transition: { duration: 0.4, ease: 'easeIn' } // faster
                 });
             }
         });
@@ -37,7 +36,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, x: -40 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.7 }}
+                    transition={{ duration: 0.4 }} // faster
                     className="lg:w-1/2"
                 >
                     <h1 className="text-5xl font-bold relative z-10">
@@ -48,7 +47,7 @@ export default function HeroSection() {
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8 }}
+                        transition={{ duration: 0.4 }}
                         viewport={{ once: false }}
                         className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                     >
@@ -59,7 +58,7 @@ export default function HeroSection() {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3, duration: 0.8 }}
+                        transition={{ delay: 0.15, duration: 0.4 }} // faster
                         viewport={{ once: false }}
                         className="mt-6 text-lg text-muted-foreground max-w-xl"
                     >
@@ -69,7 +68,7 @@ export default function HeroSection() {
                     </motion.p>
 
                     <div className="mt-8 flex items-center gap-4">
-                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link href="/projects">
                                 <Button size="lg" className="gap-2">
                                     Explore Our Work →
@@ -77,7 +76,7 @@ export default function HeroSection() {
                             </Link>
                         </motion.div>
 
-                        <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
+                        <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
                             <Link href="/pricing">
                                 <Button size="lg" variant="outline" className="gap-2">
                                     Talk to Sales
@@ -92,7 +91,7 @@ export default function HeroSection() {
                     initial={{ opacity: 0, scale: 0.8, rotateY: 20 }}
                     whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
-                    transition={{ duration: 0.8 }}
+                    transition={{ duration: 0.4 }} // faster
                     className="lg:w-1/2 flex justify-center mt-5"
                 >
                     <motion.div
@@ -101,7 +100,7 @@ export default function HeroSection() {
                     >
                         <motion.div
                             whileHover={{ rotateY: 8, scale: 1.02 }}
-                            transition={{ type: 'spring', stiffness: 160, damping: 18 }}
+                            transition={{ type: 'spring', stiffness: 300, damping: 15 }} // faster & snappier
                             className="rounded-2xl shadow-2xl bg-card border p-6"
                         >
                             {/* autoplaying local tech video */}

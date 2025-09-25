@@ -3,6 +3,9 @@
 import { motion } from 'framer-motion';
 import { useEffect, useRef } from 'react';
 import * as THREE from 'three';
+import { buttonVariants } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 export default function AboutPhilosophy() {
     const canvasRef = useRef(null);
@@ -16,7 +19,7 @@ export default function AboutPhilosophy() {
         const renderer = new THREE.WebGLRenderer({
             canvas: canvasRef.current,
             alpha: true,
-            antialias: true
+            antialias: true,
         });
 
         renderer.setSize(400, 400);
@@ -45,14 +48,14 @@ export default function AboutPhilosophy() {
                 color: new THREE.Color().setHSL(Math.random() * 0.3 + 0.5, 0.8, 0.6),
                 emissive: new THREE.Color().setHSL(Math.random() * 0.1 + 0.1, 0.8, 0.2),
                 specular: new THREE.Color(0xffffff),
-                shininess: 50
+                shininess: 50,
             });
 
             const node = new THREE.Mesh(geometry, material);
 
             const radius = 5;
             const theta = Math.random() * Math.PI * 2;
-            const phi = Math.acos((Math.random() * 2) - 1);
+            const phi = Math.acos(Math.random() * 2 - 1);
 
             node.position.x = radius * Math.sin(phi) * Math.cos(theta);
             node.position.y = radius * Math.sin(phi) * Math.sin(theta);
@@ -62,8 +65,8 @@ export default function AboutPhilosophy() {
             nodes.push({
                 mesh: node,
                 originalPosition: node.position.clone(),
-                speed: Math.random() * 0.02 + 0.005,
-                angle: Math.random() * Math.PI * 2
+                speed: Math.random() * 0.03 + 0.01, // faster motion
+                angle: Math.random() * Math.PI * 2,
             });
         }
 
@@ -77,7 +80,7 @@ export default function AboutPhilosophy() {
                         const material = new THREE.MeshPhongMaterial({
                             color: new THREE.Color().setHSL(Math.random() * 0.1 + 0.6, 0.8, 0.7),
                             transparent: true,
-                            opacity: 0.6
+                            opacity: 0.6,
                         });
 
                         const connection = new THREE.Mesh(geometry, material);
@@ -100,7 +103,7 @@ export default function AboutPhilosophy() {
             specular: 0xffffff,
             shininess: 100,
             transparent: true,
-            opacity: 0.9
+            opacity: 0.9,
         });
         const core = new THREE.Mesh(coreGeometry, coreMaterial);
         scene.add(core);
@@ -113,17 +116,17 @@ export default function AboutPhilosophy() {
 
             nodes.forEach(node => {
                 node.angle += node.speed;
-                node.mesh.position.x = node.originalPosition.x + Math.sin(node.angle) * 0.5;
-                node.mesh.position.y = node.originalPosition.y + Math.cos(node.angle) * 0.5;
-                node.mesh.position.z = node.originalPosition.z + Math.sin(node.angle * 1.5) * 0.3;
+                node.mesh.position.x = node.originalPosition.x + Math.sin(node.angle) * 0.7; // faster and bigger movement
+                node.mesh.position.y = node.originalPosition.y + Math.cos(node.angle) * 0.7;
+                node.mesh.position.z = node.originalPosition.z + Math.sin(node.angle * 1.5) * 0.4;
 
-                node.mesh.rotation.x += 0.01;
-                node.mesh.rotation.y += 0.01;
+                node.mesh.rotation.x += 0.015;
+                node.mesh.rotation.y += 0.015;
             });
 
-            core.rotation.x += 0.005;
-            core.rotation.y += 0.008;
-            core.scale.setScalar(1 + Math.sin(Date.now() * 0.002) * 0.1);
+            core.rotation.x += 0.01;
+            core.rotation.y += 0.012;
+            core.scale.setScalar(1 + Math.sin(Date.now() * 0.0025) * 0.12);
 
             renderer.render(scene, camera);
         };
@@ -159,7 +162,7 @@ export default function AboutPhilosophy() {
                     initial={{ opacity: 0, x: -50, rotateY: 90 }}
                     whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                     viewport={{ once: false, amount: 0.5 }}
-                    transition={{ duration: 1.5, delay: 0.2 }}
+                    transition={{ duration: 1, delay: 0.2 }} // slightly faster
                     className="relative w-full lg:w-2/5 flex justify-center"
                 >
                     <div className="relative w-full max-w-md aspect-square">
@@ -167,8 +170,9 @@ export default function AboutPhilosophy() {
                             ref={canvasRef}
                             className="w-full rounded-2xl shadow-2xl"
                             style={{
-                                background: 'radial-gradient(circle, rgba(79,178,214,0.1) 0%, rgba(25,25,35,0.2) 100%)',
-                                backdropFilter: 'blur(10px)'
+                                background:
+                                    'radial-gradient(circle, rgba(79,178,214,0.1) 0%, rgba(25,25,35,0.2) 100%)',
+                                backdropFilter: 'blur(10px)',
                             }}
                         />
                         <motion.div
@@ -177,10 +181,10 @@ export default function AboutPhilosophy() {
                                 boxShadow: [
                                     '0 0 20px 5px rgba(79, 178, 214, 0.3)',
                                     '0 0 40px 10px rgba(79, 178, 214, 0.5)',
-                                    '0 0 20px 5px rgba(79, 178, 214, 0.3)'
-                                ]
+                                    '0 0 20px 5px rgba(79, 178, 214, 0.3)',
+                                ],
                             }}
-                            transition={{ duration: 3, repeat: Infinity }}
+                            transition={{ duration: 2, repeat: Infinity }} // faster pulse
                         />
                     </div>
                 </motion.div>
@@ -190,7 +194,7 @@ export default function AboutPhilosophy() {
                     initial={{ opacity: 0, x: 50 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.2 }}
-                    transition={{ duration: 1, delay: 0.5 }}
+                    transition={{ duration: 1, delay: 0.3 }} // faster
                     className="w-full lg:w-3/5 text-left"
                 >
                     <motion.h2
@@ -205,7 +209,7 @@ export default function AboutPhilosophy() {
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.2, duration: 1 }}
+                        transition={{ delay: 0.2, duration: 0.8 }} // faster
                         className="text-gray-700 dark:text-gray-300 text-lg md:text-xl leading-relaxed space-y-6"
                     >
                         <p>
@@ -256,6 +260,15 @@ export default function AboutPhilosophy() {
                         <p className="italic text-gray-600 dark:text-gray-400">
                             This is our story. This is our promise. This is NestLink.
                         </p>
+
+                        {/* Example Shadcn Button for CTA */}
+                        <div className="mt-6">
+                            <Link href="/contact">
+                                <button className={cn(buttonVariants({ variant: 'default' }), 'px-6 py-3')}>
+                                    Work With Us
+                                </button>
+                            </Link>
+                        </div>
                     </motion.div>
                 </motion.div>
             </div>

@@ -16,8 +16,7 @@ const stats = [
     { value: 98, suffix: '%', label: 'Client Satisfaction' },
 ];
 
-// Counter component for the animated numbers
-const Counter = ({ value, suffix, label, delay }) => {
+const Counter = ({ value, suffix, label }) => {
     const [count, setCount] = useState(0);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true });
@@ -26,7 +25,7 @@ const Counter = ({ value, suffix, label, delay }) => {
         if (isInView) {
             let start = 0;
             const end = value;
-            const duration = 2000; // 2 seconds
+            const duration = 1200; // faster than 2s
             const incrementTime = (duration / end) * 20;
 
             const timer = setInterval(() => {
@@ -52,12 +51,11 @@ const Counter = ({ value, suffix, label, delay }) => {
 export default function AboutCoreValues() {
     const ref = useRef(null);
 
-    // Floating animation for background elements
     const floatingVariants = {
         animate: {
             y: [0, -15, 0],
             transition: {
-                duration: 6,
+                duration: 3, // faster
                 repeat: Infinity,
                 ease: "easeInOut"
             }
@@ -70,20 +68,19 @@ export default function AboutCoreValues() {
             ref={ref}
             className="relative py-28 px-6 max-w-6xl mx-auto text-center overflow-hidden"
         >
-            {/* Animated background elements */}
+            {/* Background */}
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 1.5 }}
+                transition={{ duration: 1 }}
                 className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-gradient-to-r from-purple-400/10 to-pink-400/10 blur-3xl"
             />
-
             <motion.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ duration: 1.5, delay: 0.3 }}
+                transition={{ duration: 1, delay: 0.2 }}
                 className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-gradient-to-r from-blue-400/10 to-cyan-400/10 blur-3xl"
             />
 
@@ -95,30 +92,29 @@ export default function AboutCoreValues() {
                 viewport={{ once: false, amount: 0.3 }}
                 className="absolute top-1/4 left-10 w-6 h-6 rounded-full bg-gradient-to-br from-purple-500/20 to-blue-500/20"
             />
-
             <motion.div
                 variants={floatingVariants}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ delay: 0.5 }}
+                transition={{ delay: 0.3 }}
                 className="absolute top-2/3 right-12 w-8 h-8 rounded-full bg-gradient-to-br from-amber-500/20 to-orange-500/20"
             />
-
             <motion.div
                 variants={floatingVariants}
                 initial="initial"
                 whileInView="animate"
                 viewport={{ once: false, amount: 0.3 }}
-                transition={{ delay: 1 }}
+                transition={{ delay: 0.6 }}
                 className="absolute bottom-1/4 left-20 w-4 h-4 rounded-full bg-gradient-to-br from-green-500/20 to-emerald-500/20"
             />
 
+            {/* Heading */}
             <motion.h2
                 initial={{ opacity: 0, y: -20, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.6 }} // faster
                 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-16 relative z-10"
             >
                 Core Values &{' '}
@@ -127,7 +123,7 @@ export default function AboutCoreValues() {
                     whileInView={{ backgroundPosition: '100% 50%' }}
                     viewport={{ once: false, amount: 0.5 }}
                     transition={{
-                        duration: 2,
+                        duration: 1.5,
                         repeat: Infinity,
                         repeatType: "reverse",
                         ease: "linear"
@@ -138,6 +134,7 @@ export default function AboutCoreValues() {
                 </motion.span>
             </motion.h2>
 
+            {/* Core Values Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 relative z-10">
                 {values.map((v, i) => (
                     <motion.div
@@ -148,43 +145,37 @@ export default function AboutCoreValues() {
                         whileHover={{
                             y: -10,
                             scale: 1.03,
-                            transition: { duration: 0.3 }
+                            transition: { duration: 0.15 } // faster
                         }}
                         transition={{
-                            delay: i * 0.15,
-                            duration: 0.8,
+                            delay: i * 0.1, // faster stagger
+                            duration: 0.5, // faster
                             type: "spring",
-                            stiffness: 100
+                            stiffness: 120
                         }}
                         className="relative rounded-2xl p-8 shadow-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 backdrop-blur-lg overflow-hidden group"
                     >
-                        {/* Hover effect background */}
                         <motion.div
-                            className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                            className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                             initial={false}
                         />
-
-                        {/* Animated border on hover */}
                         <motion.div
                             className="absolute inset-0 rounded-2xl"
                             initial={false}
                             whileHover={{
                                 boxShadow: "0 0 0 1px rgba(99, 102, 241, 0.3), 0 0 20px rgba(99, 102, 241, 0.2)",
-                                transition: { duration: 0.3 }
+                                transition: { duration: 0.2 } // faster
                             }}
                         />
-
-                        {/* Icon with animation */}
                         <motion.div
                             initial={{ scale: 0.8, opacity: 0 }}
                             whileInView={{ scale: 1, opacity: 1 }}
                             viewport={{ once: false, amount: 0.5 }}
-                            transition={{ delay: i * 0.15 + 0.2, duration: 0.5 }}
+                            transition={{ delay: i * 0.1 + 0.1, duration: 0.4 }}
                             className="text-4xl mb-4"
                         >
                             {v.icon}
                         </motion.div>
-
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white relative z-10">
                             {v.value}
                         </h3>
@@ -195,12 +186,12 @@ export default function AboutCoreValues() {
                 ))}
             </div>
 
-            {/* Animated stats with counting effect */}
+            {/* Stats */}
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ delay: 0.6, duration: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }} // faster
                 className="mt-20 flex justify-around flex-wrap gap-8 text-center relative z-10"
             >
                 {stats.map((stat, index) => (
@@ -209,7 +200,7 @@ export default function AboutCoreValues() {
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false, amount: 0.5 }}
-                        transition={{ delay: 0.8 + index * 0.2, duration: 0.5 }}
+                        transition={{ delay: 0.4 + index * 0.1, duration: 0.4 }} // faster
                         className="relative"
                     >
                         <div className="absolute -inset-3 bg-gradient-to-r from-purple-500/10 to-blue-500/10 blur-lg rounded-full opacity-75 group-hover:opacity-100 transition duration-300"></div>
@@ -218,19 +209,18 @@ export default function AboutCoreValues() {
                                 value={stat.value}
                                 suffix={stat.suffix}
                                 label={stat.label}
-                                delay={index * 0.3}
                             />
                         </div>
                     </motion.div>
                 ))}
             </motion.div>
 
-            {/* Additional decorative element */}
+            {/* Decorative SVG */}
             <motion.div
                 initial={{ opacity: 0, pathLength: 0 }}
                 whileInView={{ opacity: 1, pathLength: 1 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 2, delay: 0.5 }}
+                transition={{ duration: 1.2, delay: 0.2 }} // faster
                 className="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
                 <svg width="80%" height="80%" viewBox="0 0 100 100" className="opacity-5">

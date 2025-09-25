@@ -24,7 +24,7 @@ export default function Logo() {
                 {/* NestLink Text */}
                 <h1 className={`text-2xl font-bold relative z-10`}>
                     <span className={nestColor}>Nest</span>
-                    <span className="text-blue-400">Link</span>
+                    <span className="text-[#a0adf7]">Link</span>
                 </h1>
 
                 {/* Stars forming uneven triangle above N */}

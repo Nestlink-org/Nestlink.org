@@ -20,8 +20,6 @@ const cultures = [
     },
 ];
 
-
-// Additional stories to make the section more narrative
 const successStories = [
     {
         quote: "The culture of trust and experimentation at NestLink allowed me to pivot from traditional design thinking to pioneering our voice interface system that now serves over 50,000 users daily.",
@@ -42,7 +40,7 @@ export default function AboutCulture() {
                 initial={{ opacity: 0, y: -20, rotateX: -10 }}
                 whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ duration: 1 }}
+                transition={{ duration: 0.6 }} // faster
                 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-12"
             >
                 Our Culture: Where Ideas Become Reality
@@ -52,7 +50,7 @@ export default function AboutCulture() {
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
+                transition={{ delay: 0.1, duration: 0.5 }} // faster
                 className="text-lg text-gray-700 dark:text-gray-300 mb-16 max-w-3xl mx-auto"
             >
                 At NestLink, we don't just build products—we cultivate environments where creativity flourishes,
@@ -67,8 +65,8 @@ export default function AboutCulture() {
                         initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30, rotateY: i % 2 === 0 ? 10 : -10 }}
                         whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                         viewport={{ once: false, amount: 0.5 }}
-                        transition={{ delay: i * 0.15, duration: 0.8 }}
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                        transition={{ delay: i * 0.08, duration: 0.5 }} // faster
+                        whileHover={{ y: -5, transition: { duration: 0.15 } }} // faster
                         className="rounded-2xl p-6 shadow-xl bg-gradient-to-br from-white/5 to-white/2 border border-white/5 backdrop-blur-sm hover:shadow-2xl transition-shadow"
                     >
                         <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{c.title}</h3>
@@ -79,12 +77,12 @@ export default function AboutCulture() {
                 ))}
             </div>
 
-            {/* Success Stories Section */}
+            {/* Success Stories */}
             <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ delay: 0.4, duration: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }} // faster
                 className="mb-12"
             >
                 <h3 className="text-2xl font-semibold text-gray-900 dark:text-white mb-8">Voices From Our Team</h3>
@@ -96,7 +94,7 @@ export default function AboutCulture() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: false, amount: 0.5 }}
-                            transition={{ delay: 0.6 + i * 0.2, duration: 0.8 }}
+                            transition={{ delay: 0.3 + i * 0.1, duration: 0.5 }} // faster
                             className="bg-white/5 dark:bg-black/10 p-6 rounded-2xl border border-white/10 backdrop-blur-sm text-left"
                         >
                             <svg className="w-8 h-8 text-gray-400 dark:text-gray-500 mb-4" fill="currentColor" viewBox="0 0 24 24">
@@ -116,7 +114,7 @@ export default function AboutCulture() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: false, amount: 0.5 }}
-                transition={{ delay: 0.8, duration: 1 }}
+                transition={{ delay: 0.4, duration: 0.5 }} // faster
                 className="bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 p-8 rounded-2xl border border-blue-200 dark:border-blue-800/30 max-w-4xl mx-auto"
             >
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">The NestLink Story</h3>

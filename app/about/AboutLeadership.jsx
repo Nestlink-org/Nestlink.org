@@ -11,13 +11,13 @@ const leaders = [
     { name: 'Sophia W.', role: 'CMO', img: '/Babe.jpeg' },
 ];
 
-// Scattered positions (spread out so no overlap)
+// Scattered positions with responsive adjustments
 const positions = [
     "top-0 left-0",
-    "top-3 right-50",
-    "top-45 left-24",
-    "top-43 right-20",
-    "bottom-10 left-50",
+    "top-3 right-10",
+    "top-44 left-20 md:top-44 md:left-20",
+    "top-44 right-16 sm:top-52 sm:top-60",
+    "bottom-10 left-40",
 ];
 
 // Funky border radius styles
@@ -40,7 +40,7 @@ export default function AboutLeadership() {
                 <motion.h2
                     initial={{ opacity: 0, y: -30 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1 }}
+                    transition={{ duration: 0.6 }}
                     className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6"
                 >
                     Meet Our Leadership
@@ -48,7 +48,7 @@ export default function AboutLeadership() {
                 <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    transition={{ duration: 1, delay: 0.3 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
                     className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed"
                 >
                     Our leadership team blends innovation, expertise, and vision to drive the future
@@ -58,47 +58,53 @@ export default function AboutLeadership() {
 
             {/* Right side scattered floating images */}
             <div className="relative w-full h-[600px]">
+                {/* Single glowing lightblue orb in the background */}
+                <motion.div
+                    className="absolute inset-0 rounded-full bg-cyan-400/20 blur-3xl"
+                    animate={{ scale: [1, 1.2, 1] }}
+                    transition={{ duration: 6, repeat: Infinity }}
+                />
+
                 {leaders.map((leader, i) => (
                     <motion.div
                         key={leader.name}
                         className={`absolute ${positions[i % positions.length]} cursor-pointer`}
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: i * 0.2, duration: 0.8 }}
+                        transition={{ duration: 0.5, delay: i * 0.1 }}
                         whileHover={{ scale: 2, zIndex: 50 }}
                         animate={{
-                            y: [0, -10, 0], // floatinn={{
+                            y: [0, -10, 0],
                             repeat: Infinity,
-                            duration: 6,
+                            duration: 4,
                             ease: "easeInOut",
-                            delay: i * 0.5, // stagger float start
+                            delay: i * 0.2,
                         }}
                     >
-                        {/* Card with funky → rectangle on hover (together with zoom) */}
+                        {/* Card with hover effect */}
                         <motion.div
-                            className={`w-40 h-40 overflow-hidden shadow-lg border-4 border-white/20 ${shapeClasses[i % shapeClasses.length]}`}
+                            className={`w-40 h-40 overflow-hidden border border-white/30 ${shapeClasses[i % shapeClasses.length]}`}
                             whileHover={{
                                 borderRadius: "0px",
                                 scale: 2,
                                 transition: { duration: 0.3, ease: "easeInOut" },
                             }}
-                            whileTap={{ scale: 1.9 }}
+                            whileTap={{ scale: 2 }}
                         >
                             <img
                                 src={leader.img}
                                 alt={leader.name}
                                 className="w-full h-full object-cover"
                             />
-                        </motion.div>
 
-                        {/* Role tag */}
-                        <motion.div
-                            initial={{ opacity: 0, y: 10 }}
-                            whileHover={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="text-center mt-2 text-sm font-semibold text-white bg-gradient-to-r from-blue-500/80 to-purple-600/80 rounded-full px-3 py-1 inline-block"
-                        >
-                            {leader.role}
+                            {/* Role appears on hover inside the picture */}
+                            <motion.div
+                                className="absolute inset-0 flex items-center justify-center bg-black/50 text-white font-semibold text-lg opacity-0"
+                                whileHover={{ opacity: 1 }}
+                                transition={{ duration: 0.2 }}
+                            >
+                                {leader.role}
+                            </motion.div>
                         </motion.div>
                     </motion.div>
                 ))}

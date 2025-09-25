@@ -188,7 +188,7 @@ const stories = [
 
 export default function Stories() {
     return (
-        <section className="h-screen flex justify-center items-center px-6 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
+        <section className="h-screen flex justify-center items-center px-6 relative overflow-hidden">
             {/* Background elements */}
             <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgdmlld0JveD0iMCAwIDYwIDYwIj48ZyBmaWxsPSJub25lIiBzdHJva2U9IiM4MDIwZmYiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjEiPjxwYXRoIGQ9Ik0wLDMwIGMzMCwwIDMwLDAgNjAsME0zMCwwIGMwLDMwIDAsMzAgMCw2MCIvPjwvZz48L3N2Zz4=')] opacity-10"></div>
 
@@ -217,7 +217,7 @@ export default function Stories() {
 
             <div className="w-full max-w-6xl mx-auto relative z-10">
                 <motion.h3
-                    className="text-2xl md:text-4xl text-center uppercase tracking-widest mb-12 font-black bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500"
+                    className="text-2xl md:text-4xl text-center uppercase tracking-widest mb-12 font-black text-[lightblue]"
                     initial={{ opacity: 0, y: -20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}

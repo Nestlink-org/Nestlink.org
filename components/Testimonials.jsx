@@ -58,31 +58,30 @@ export default function Testimonials() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isDarkMode, setIsDarkMode] = useState(true);
 
-    // Detect theme (connect to your theme context)
+    // Detect system theme
     useEffect(() => {
         const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
         setIsDarkMode(mediaQuery.matches);
 
         const handler = (e) => setIsDarkMode(e.matches);
         mediaQuery.addEventListener('change', handler);
-
         return () => mediaQuery.removeEventListener('change', handler);
     }, []);
 
-    // Theme-aware colors
-    const textColor = isDarkMode ? 'text-gray-100' : 'text-gray-800';
-    const secondaryTextColor = isDarkMode ? 'text-gray-400' : 'text-gray-600';
-    const borderColor = isDarkMode ? 'border-gray-700' : 'border-gray-200';
-    const cardBg = isDarkMode ? 'bg-gray-800/50' : 'bg-white/80';
-    const hoverBg = isDarkMode ? 'hover:bg-gray-700/30' : 'hover:bg-gray-100/80';
-
-    // Auto-rotate testimonials
+    // Auto-rotate featured testimonial
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentIndex((prev) => (prev + 1) % leaders.length);
-        }, 5000);
+        }, 4000); // Faster rotation
         return () => clearInterval(interval);
     }, []);
+
+    // Theme-based colors
+    const cardBg = isDarkMode ? 'bg-gray-800/50 text-gray-100' : 'bg-blue-100/70 text-blue-900';
+    const hoverBg = isDarkMode ? 'hover:bg-gray-700/30' : 'hover:bg-blue-200/70';
+    const borderColor = isDarkMode ? 'border-gray-700' : 'border-blue-200';
+    const textColor = isDarkMode ? 'text-gray-100' : 'text-blue-900';
+    const secondaryText = isDarkMode ? 'text-gray-400' : 'text-blue-700';
 
     return (
         <section className="py-20 container mx-auto px-6 relative">
@@ -91,13 +90,13 @@ export default function Testimonials() {
                 initial={{ opacity: 0, y: -20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8 }}
+                transition={{ duration: 0.5 }}
                 className="text-center mb-16"
             >
                 <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${textColor}`}>
                     Trusted by Industry Leaders
                 </h3>
-                <p className={`max-w-2xl mx-auto ${secondaryTextColor}`}>
+                <p className={`max-w-2xl mx-auto ${secondaryText}`}>
                     Discover what executives and technical leaders say about their experience working with our team
                 </p>
             </motion.div>
@@ -110,25 +109,25 @@ export default function Testimonials() {
                         initial={{ opacity: 0, y: 30 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true, amount: 0.3 }}
-                        transition={{ delay: i * 0.1, duration: 0.6 }}
+                        transition={{ delay: i * 0.08, duration: 0.5 }}
                         className={`p-6 rounded-xl ${cardBg} border ${borderColor} backdrop-blur-sm ${hoverBg} transition-all duration-300 h-full flex flex-col`}
                     >
                         {/* Rating */}
                         <div className="flex items-center gap-1 mb-4">
                             {Array.from({ length: 5 }).map((_, idx) => (
-                                <div key={idx} className={`text-sm ${idx < leader.rating ? 'text-yellow-400' : 'text-gray-400'}`}>
+                                <div key={idx} className={`text-sm ${idx < leader.rating ? 'text-yellow-400' : secondaryText}`}>
                                     ★
                                 </div>
                             ))}
                         </div>
 
                         {/* Quote */}
-                        <p className={`mb-6 italic ${secondaryTextColor} flex-1`}>
+                        <p className={`mb-6 italic ${secondaryText} flex-1`}>
                             "{leader.quote}"
                         </p>
 
                         {/* Author */}
-                        <div className="flex items-center gap-4 pt-4 border-t border-gray-700/30">
+                        <div className={`flex items-center gap-4 pt-4 border-t ${borderColor}/50`}>
                             <div className="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold overflow-hidden">
                                 <img
                                     src={leader.image}
@@ -138,8 +137,8 @@ export default function Testimonials() {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className={`font-semibold ${textColor}`}>{leader.name}</div>
-                                <div className={`text-sm ${secondaryTextColor}`}>{leader.role}</div>
-                                <div className={`text-xs ${secondaryTextColor} opacity-70`}>{leader.company}</div>
+                                <div className={`text-sm ${secondaryText}`}>{leader.role}</div>
+                                <div className={`text-xs ${secondaryText} opacity-70`}>{leader.company}</div>
                             </div>
                         </div>
                     </motion.div>
@@ -151,19 +150,19 @@ export default function Testimonials() {
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
                 className="max-w-4xl mx-auto"
             >
                 <div className={`p-8 rounded-xl ${cardBg} border ${borderColor} backdrop-blur-sm text-center`}>
                     <div className="flex justify-center mb-6">
                         {Array.from({ length: 5 }).map((_, idx) => (
-                            <div key={idx} className={`text-lg ${idx < leaders[currentIndex].rating ? 'text-yellow-400' : 'text-gray-400'}`}>
+                            <div key={idx} className={`text-lg ${idx < leaders[currentIndex].rating ? 'text-yellow-400' : secondaryText}`}>
                                 ★
                             </div>
                         ))}
                     </div>
 
-                    <p className={`text-xl italic mb-8 ${secondaryTextColor}`}>
+                    <p className={`text-xl italic mb-8 ${secondaryText}`}>
                         "{leaders[currentIndex].quote}"
                     </p>
 
@@ -177,8 +176,8 @@ export default function Testimonials() {
                         </div>
                         <div>
                             <div className={`font-semibold text-lg ${textColor}`}>{leaders[currentIndex].name}</div>
-                            <div className={secondaryTextColor}>{leaders[currentIndex].role}</div>
-                            <div className={`text-sm ${secondaryTextColor} opacity-70`}>{leaders[currentIndex].company}</div>
+                            <div className={secondaryText}>{leaders[currentIndex].role}</div>
+                            <div className={`text-sm ${secondaryText} opacity-70`}>{leaders[currentIndex].company}</div>
                         </div>
                     </div>
 
@@ -190,7 +189,7 @@ export default function Testimonials() {
                                 onClick={() => setCurrentIndex(idx)}
                                 className={`w-3 h-3 rounded-full transition-all duration-300 ${idx === currentIndex
                                     ? 'bg-blue-500 w-6'
-                                    : 'bg-gray-500 hover:bg-gray-400'
+                                    : 'bg-blue-300 hover:bg-blue-400'
                                     }`}
                                 aria-label={`View testimonial from ${leaders[idx].name}`}
                             />
@@ -204,24 +203,24 @@ export default function Testimonials() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.6 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
                 className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 text-center"
             >
                 <div>
-                    <div className={`text-3xl font-bold ${textColor}`}>98%</div>
-                    <div className={secondaryTextColor}>Client Satisfaction</div>
+                    <div className={`text-3xl font-bold text-[lightblue] ${textColor}`}>98%</div>
+                    <div className={secondaryText}>Client Satisfaction</div>
                 </div>
                 <div>
-                    <div className={`text-3xl font-bold ${textColor}`}>150+</div>
-                    <div className={secondaryTextColor}>Projects Completed</div>
+                    <div className={`text-3xl font-bold text-[lightblue] ${textColor}`}>150+</div>
+                    <div className={secondaryText}>Projects Completed</div>
                 </div>
                 <div>
-                    <div className={`text-3xl font-bold ${textColor}`}>4.9/5</div>
-                    <div className={secondaryTextColor}>Average Rating</div>
+                    <div className={`text-3xl font-bold text-[lightblue] ${textColor}`}>4.9/5</div>
+                    <div className={secondaryText}>Average Rating</div>
                 </div>
                 <div>
-                    <div className={`text-3xl font-bold ${textColor}`}>100%</div>
-                    <div className={secondaryTextColor}>Recommendation Rate</div>
+                    <div className={`text-3xl font-bold text-[lightblue] ${textColor}`}>100%</div>
+                    <div className={secondaryText}>Recommendation Rate</div>
                 </div>
             </motion.div>
         </section>

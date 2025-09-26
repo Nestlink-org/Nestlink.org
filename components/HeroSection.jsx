@@ -37,9 +37,9 @@ export default function HeroSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.4 }} // faster
-                    className="lg:w-1/2"
+                    className="lg:w-1/2 font-[ClashDisplay]"
                 >
-                    <h1 className="text-5xl font-bold relative z-10">
+                    <h1 className="text-5xl font-bold relative z-10 tracking-tight">
                         <span className="text-foreground">Nest</span>
                         <span className="text-primary">Link</span>
                     </h1>
@@ -51,9 +51,10 @@ export default function HeroSection() {
                         viewport={{ once: false }}
                         className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                     >
-
-                        <span className="block">  Organisations built</span>
-                        <span className="block text-primary">for the <span className='italic font-extralight'>Perfect</span> 3D future</span>
+                        <span className="block">Organisations built</span>
+                        <span className="block text-primary">
+                            for the <span className="italic font-extralight">Perfect</span> 3D future
+                        </span>
                     </motion.h1>
 
                     <motion.p
@@ -67,6 +68,9 @@ export default function HeroSection() {
                         cloud expansions, and AI-driven tools that scale. Elevate your brand
                         with motion, depth and measurable results.
                     </motion.p>
+
+
+
 
                     <div className="mt-8 flex items-center gap-4">
                         <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -85,7 +89,21 @@ export default function HeroSection() {
                             </Link>
                         </motion.div>
                     </div>
+
+                    {/* Subtle bullet points with ticks in one row */}
+                    <ul className="mt-6 flex flex-wrap gap-6 text-muted-foreground text-base">
+                        <li className="flex items-center gap-2">
+                            <span className="text-green-500 flex-shrink-0">✓</span>
+                            <span>Tailored 3D & AI-driven solutions</span>
+                        </li>
+                        <li className="flex items-center gap-2">
+                            <span className="text-green-500 flex-shrink-0">✓</span>
+                            <span>Scalable cloud-ready platforms</span>
+                        </li>
+
+                    </ul>
                 </motion.div>
+
 
                 {/* RIGHT: Video Card */}
 

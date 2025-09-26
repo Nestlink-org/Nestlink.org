@@ -9,6 +9,13 @@ import Logo from './Logo';
 import { Button } from '@/components/ui/button';
 import { Switch } from '@/components/ui/switch';
 import { Sun, Moon } from 'lucide-react';
+import { Poppins } from 'next/font/google';
+
+const poppins = Poppins({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
+    variable: '--font-poppins',
+});
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
@@ -32,55 +39,50 @@ const Header = () => {
     ];
 
     return (
-        <motion.header
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200
-                ${isScrolled
+        <header
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${poppins.variable} font-sans
+       ${isScrolled
                     ? 'backdrop-blur-md py-3 bg-[lightblue] dark:bg-black'
-                    : 'bg-[lightblue] dark:bg-transparent py-5'
+                    : 'bg-[lightblue] dark:bg-[black] py-5'
                 }
-            `}
+      `}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
                 {/* Logo */}
-                <motion.div
-                    initial={{ scale: 0, rotate: -180 }}
-                    animate={{ scale: 1, rotate: 0 }}
-                    transition={{ type: 'spring', stiffness: 500, damping: 25 }}
-                    whileTap={{ scale: 0.95 }}
-                    className="flex items-center space-x-2"
-                >
+                <div className="flex items-center space-x-2">
                     <Logo />
-                </motion.div>
+                </div>
 
                 {/* Desktop Navigation */}
                 <nav className="hidden md:flex space-x-8 text-base font-medium px-6 py-3 rounded-[20px] backdrop-blur-sm bg-gray-100/50 dark:bg-gray-900/10">
                     {navItems.map((item) => {
                         const isActive = pathname === item.path;
                         return (
-                            <motion.div
-                                key={item.path}
-                                whileHover={{ scale: 1.1, y: -2 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="relative"
-                            >
+                            <motion.div key={item.path} className="relative group">
                                 <Link
                                     href={item.path}
-                                    className={`transition-colors duration-150 relative
-                                        ${isActive
-                                            ? 'text-primary dark:text-primary-dark'
-                                            : 'text-foreground hover:text-primary dark:hover:text-primary-dark'
+                                    className={`transition-colors duration-200 relative pb-1
+                    ${isActive
+                                            ? 'text-primary font-semibold'
+                                            : 'text-foreground hover:text-primary'
                                         }
-                                    `}
+                  `}
                                 >
                                     {item.name}
                                 </Link>
+
+                                {/* Cool hover underline */}
+                                <span
+                                    className="absolute left-0 -bottom-0.5 h-0.5 w-0 bg-gradient-to-r from-primary to-secondary
+                    transition-all duration-300 group-hover:w-full"
+                                />
+
+                                {/* Active link underline (crazy glowing bar) */}
                                 {isActive && (
-                                    <motion.div
+                                    <motion.span
                                         layoutId="activeLink"
-                                        className="absolute -bottom-1 left-0 right-0 h-0.5 rounded-full bg-gradient-to-r from-primary to-secondary"
+                                        className="absolute -bottom-1 left-0 right-0 h-[3px] rounded-full 
+                      bg-gradient-to-r from-primary to-secondary shadow-[0_0_8px_rgba(56,189,248,0.8)]"
                                         transition={{ type: 'spring', stiffness: 400, damping: 20 }}
                                     />
                                 )}
@@ -92,28 +94,27 @@ const Header = () => {
                 {/* Theme Toggle + Contact + Hamburger */}
                 <div className="flex items-center space-x-4">
                     {mounted && (
-                        <motion.div whileTap={{ scale: 0.95 }} className="flex items-center space-x-2">
+                        <div className="flex items-center space-x-2">
                             <Sun className="w-5 h-5 text-sky-400 dark:text-sky-500 transition-colors duration-150" />
                             <Switch
                                 checked={theme === 'dark'}
                                 onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
                             />
                             <Moon className="w-5 h-5 text-blue-400 dark:text-blue-300 transition-colors duration-150" />
-                        </motion.div>
+                        </div>
                     )}
 
                     <Link href="/contact" className="hidden md:block">
                         <Button variant="outline">{'Contact Us'}</Button>
                     </Link>
 
-                    <motion.button
+                    <button
                         onClick={() => setMenuOpen(!menuOpen)}
                         className="md:hidden text-foreground text-3xl"
-                        whileTap={{ scale: 0.85 }}
                         aria-label="Toggle menu"
                     >
                         {menuOpen ? '✖' : '☰'}
-                    </motion.button>
+                    </button>
                 </div>
             </div>
 
@@ -133,9 +134,9 @@ const Header = () => {
                                 <Link
                                     key={item.path}
                                     href={item.path}
-                                    className={`block text-lg font-semibold transition-colors duration-150
-                                        ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}
-                                    `}
+                                    className={`block text-lg font-semibold transition-colors duration-200 relative pb-1
+                    ${isActive ? 'text-primary' : 'text-foreground hover:text-primary'}
+                  `}
                                     onClick={() => setMenuOpen(false)}
                                 >
                                     {item.name}
@@ -149,7 +150,7 @@ const Header = () => {
                     </motion.nav>
                 )}
             </AnimatePresence>
-        </motion.header>
+        </header>
     );
 };
 

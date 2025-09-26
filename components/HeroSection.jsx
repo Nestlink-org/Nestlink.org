@@ -51,8 +51,9 @@ export default function HeroSection() {
                         viewport={{ once: false }}
                         className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                     >
-                        <span className="block">Organisations built</span>
-                        <span className="block text-primary">for the 3D future</span>
+
+                        <span className="block">  Organisations built</span>
+                        <span className="block text-primary">for the <span className='italic font-extralight'>Perfect</span> 3D future</span>
                     </motion.h1>
 
                     <motion.p

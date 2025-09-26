@@ -63,7 +63,7 @@ export default function HeroSection() {
 
     return (
         <section className="container mx-auto px-6 min-h-screen flex items-center">
-            <div className="flex flex-col-reverse lg:flex-row items-center gap-40 w-full">
+            <div className="flex flex-col-reverse lg:flex-row items-center gap-12 w-full justify-between">
 
                 {/* LEFT: text */}
                 <motion.div

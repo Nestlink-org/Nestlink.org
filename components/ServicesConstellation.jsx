@@ -102,7 +102,7 @@ export default function ServicesConstellation() {
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.6 }}
             >
-                NestLink
+                <span className='text-[#38b6ff]'> Nest</span>Link
             </motion.div>
 
             {/* Services Grid */}

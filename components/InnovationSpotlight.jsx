@@ -98,7 +98,7 @@ export default function InnovationSpotlight() {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: false, amount: 0.3 }}
                         transition={{ delay: i * 0.1, duration: 0.6 }}
-                        className="p-6 rounded-lg border bg-background/50 border-border backdrop-blur-sm"
+                        className="p-6 rounded-lg border bg-[#c5e2f1] dark:bg-background border-border backdrop-blur-sm"
                     >
                         <div className="flex items-start gap-4 mb-4">
                             <span className="text-3xl flex-shrink-0">{it.icon}</span>

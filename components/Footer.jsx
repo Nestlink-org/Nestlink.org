@@ -6,7 +6,7 @@ import Logo from './Logo';
 
 export default function Footer() {
     return (
-        <footer className="relative bg-gradient-to-t from-gray-900/90 via-black/80 to-gray-900/90 text-white py-20 px-6 overflow-hidden mt-auto">
+        <footer className="relative bg-[#000000] text-white py-20 px-6 overflow-hidden mt-auto">
 
             {/* Floating 3D accent shapes */}
             <motion.div
@@ -127,13 +127,19 @@ export default function Footer() {
 
             {/* Footer bottom line */}
             <motion.div
-                className="mt-16 border-t border-white/10 pt-6 text-center text-sm text-white/60 relative z-10"
+                className="mt-16 border-t border-white/10 pt-6 text-center text-sm text-white/60 relative z-10 flex items-center justify-center gap-2"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: false }}
                 transition={{ duration: 0.8 }}
             >
-                © 2025 NestLink. All rights reserved.
+                © 2025 All rights reserved | <a href="https://nestlink-org.vercel.app/" target='blank'>
+                    <img
+                        src="/2.png"
+                        alt="NestLink Logo"
+                        className="h-5 w-auto object-contain inline-block" // 👈 resize with h-5
+                    />
+                </a>
             </motion.div>
         </footer>
     );

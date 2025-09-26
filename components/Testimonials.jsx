@@ -77,11 +77,11 @@ export default function Testimonials() {
     }, []);
 
     // Theme-based colors
-    const cardBg = isDarkMode ? 'bg-gray-800/50 text-gray-100' : 'bg-blue-100/70 text-blue-900';
+    const cardBg = isDarkMode ? 'bg-background text-gray-100' : 'bg-[#c5e2f1] text-background';
     const hoverBg = isDarkMode ? 'hover:bg-gray-700/30' : 'hover:bg-blue-200/70';
     const borderColor = isDarkMode ? 'border-gray-700' : 'border-blue-200';
-    const textColor = isDarkMode ? 'text-gray-100' : 'text-blue-900';
-    const secondaryText = isDarkMode ? 'text-gray-400' : 'text-blue-700';
+    const textColor = isDarkMode ? 'text-gray-100' : 'text-background';
+    const secondaryText = isDarkMode ? 'text-gray-400' : 'text-background';
 
     return (
         <section className="py-20 container mx-auto px-6 relative">

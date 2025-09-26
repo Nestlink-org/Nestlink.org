@@ -110,7 +110,7 @@ export default function ServicesConstellation() {
                 {services.map((s, idx) => (
                     <motion.div
                         key={s.title}
-                        className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-background cursor-pointer group"
+                        className="relative rounded-2xl overflow-hidden shadow-2xl border border-border bg-[#c5e2f1] dark:bg-background cursor-pointer group"
                         initial={{ opacity: 0, scale: 0.8 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: false, amount: 0.3 }}

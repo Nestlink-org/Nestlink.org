@@ -75,7 +75,7 @@ export default function Journey() {
                                     <div className={`hidden md:block absolute top-1/2 transform -translate-y-1/2 h-0.5 bg-gradient-to-r ${isLeft ? 'left-28 w-[calc(50%-7rem)] from-cyan-400 to-purple-500' : 'right-28 w-[calc(50%-7rem)] from-purple-500 to-cyan-400'}`}></div>
 
                                     {/* Description card */}
-                                    <motion.div className={`md:max-w-lg rounded-xl bg-background/80 border border-border text-foreground relative overflow-hidden ${isLeft ? 'md:ml-auto md:order-2 border-cyan-400/30' : 'md:mr-auto md:order-1 border-purple-400'}`}
+                                    <motion.div className={`md:max-w-lg rounded-xl bg-[#c5e2f1] dark:bg-background border border-border text-foreground relative overflow-hidden ${isLeft ? 'md:ml-auto md:order-2 border-cyan-400/30' : 'md:mr-auto md:order-1 border-purple-400'}`}
                                         initial={{ opacity: 0, x: isLeft ? 100 : -100, rotateY: 45 }}
                                         whileInView={{ opacity: 1, x: 0, rotateY: 0 }}
                                         viewport={{ once: false, amount: 0.3 }}

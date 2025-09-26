@@ -154,7 +154,7 @@ export default function ServicesWeOffer() {
 
                 {/* Title */}
                 <div className="text-center max-w-4xl mx-auto mb-20 relative z-10">
-                    <h2 className="text-5xl md:text-7xl font-black mb-6">
+                    <h2 className="text-5xl md:text-5xl font-black mb-6 text-[#38b6ff]">
                         SERVICES WE OFFER
                     </h2>
                     <p className="text-xl md:text-2xl max-w-3xl mx-auto leading-relaxed">
@@ -164,7 +164,7 @@ export default function ServicesWeOffer() {
                 </div>
 
                 {/* Services Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10 bg-[#c5e2f1] dark:bg-background">
                     {services.map((service, index) => (
                         <div
                             key={service.title}
@@ -201,8 +201,8 @@ export default function ServicesWeOffer() {
                                             ))}
                                             {service.tools.length > 3 && <span className="text-xs">+{service.tools.length - 3} more</span>}
                                         </div>
-                                        <Button variant="outline" className="w-full" onClick={(e) => e.stopPropagation()}>
-                                            Click to see credentials
+                                        <Button variant=" outline " className="w-full animate-bounce text-[#38b6ff]" onClick={(e) => e.stopPropagation()}>
+                                            Click the Video to see credentials
                                         </Button>
                                     </div>
                                 </motion.div>

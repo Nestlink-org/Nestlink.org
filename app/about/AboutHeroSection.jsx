@@ -76,13 +76,13 @@ export default function AboutHeroSection() {
                 <motion.div
                     className="absolute inset-0 pointer-events-none"
                     style={{
-                        backgroundImage: `linear-gradient(to right, ${isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.15)'
+                        backgroundImage: `linear-gradient(to right, ${isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.15)'
                             } 1px, transparent 1px),
-                                         linear-gradient(to bottom, ${isDarkMode ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.15)'
+                                         linear-gradient(to bottom, ${isDarkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.15)'
                             } 1px, transparent 1px)`,
                         backgroundSize: '50px 50px',
                     }}
-                    animate={{ backgroundPosition: ['0 0', '50px 50px', '0 0'] }}
+                    animate={{ backgroundPosition: ['0 0', '100px 100px'] }}
                     transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
                 />
 

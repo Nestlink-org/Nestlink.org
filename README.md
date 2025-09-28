@@ -121,12 +121,12 @@ nestlink.org/
 
 - [x] Initialize project with Next.js + Tailwind.
 - [x] Landing page with hero, about, and services.
-- [ ] Add 3D interactive sections (React-Three-Fiber).
-- [ ] Build portfolio showcase & case studies.
-- [ ] Implement contact/inquiry system.
-- [ ] Develop authentication system.
-- [ ] Admin & client dashboards.
-- [ ] Deploy final production version to Vercel.
+- [x] Add 3D interactive sections (React-Three-Fiber).
+- [x] Build portfolio showcase & case studies.
+- [x] Implement contact/inquiry system.
+- [x] Develop authentication system.
+- [x] Admin & client dashboards.
+- [x] Deploy final production version to Vercel.
 
 ---
 

@@ -146,7 +146,7 @@ const LoadingScreen = ({ onComplete }) => {
         <div className="relative">
           <div className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]">
             <TypingEffect
-              text="Entering cosmic space..."
+              text="Initializing immersive experience...stay tight"
               onTypingComplete={() => setTypingComplete(true)}
             />
             <span className="animate-pulse text-blue-300 ml-1">|</span>
@@ -183,16 +183,6 @@ const LoadingScreen = ({ onComplete }) => {
             </div>
           </motion.div>
         )}
-
-        {/* Hint text */}
-        <motion.div
-          className="text-blue-300/70 text-sm font-light mt-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-        >
-          Drag to navigate the cosmos
-        </motion.div>
       </div>
 
       {/* Additional CSS for extra brightness */}

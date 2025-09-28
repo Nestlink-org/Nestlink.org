@@ -1,7 +1,3 @@
-Perfect ✅ Let’s make the **Nestlink.org README.md** look **professional, polished, and GitHub-ready** with **badges, shields, and more detailed sections**.
-
-Here’s a **full version** for you:
-
 ---
 
 # 🌐 Nestlink.org

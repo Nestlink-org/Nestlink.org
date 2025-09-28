@@ -146,7 +146,7 @@ const LoadingScreen = ({ onComplete }) => {
         <div className="relative">
           <div className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]">
             <TypingEffect
-              text="Initializing immersive experience...stay tight"
+              text="Initializing immersive experience...hold tight"
               onTypingComplete={() => setTypingComplete(true)}
             />
             <span className="animate-pulse text-blue-300 ml-1">|</span>

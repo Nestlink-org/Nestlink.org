@@ -9,7 +9,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function HeroSection() {
     const { theme } = useTheme();
     const strokeColor = theme === 'dark' ? '#38b6ff' : '#38b6ff';
-    const containerRef = useRef < HTMLDivElement > (null);
+    const containerRef = useRef(null);
     const [isCaptured, setIsCaptured] = useState(false);
 
     const globeRotate = useMotionValue(0);

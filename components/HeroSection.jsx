@@ -97,7 +97,7 @@ export default function HeroSection() {
 
             {/* Border frame - becomes more visible during capture */}
             <motion.div
-                className="absolute inset-0 border-3 border-primary/30 rounded-2xl pointer-events-none z-10"
+                className="absolute inset-0 border-3 border-black pointer-events-none z-10"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isCaptured ? 1 : 0 }}
                 transition={{ duration: 0.4 }}
@@ -120,7 +120,7 @@ export default function HeroSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.3 }}
-                    className="font-[ClashDisplay] w-full lg:ml-12 lg:w-[45%]"
+                    className="font-[ClashDisplay] w-full lg:ml-20 lg:w-[60%] lg:mt-0 mt-20"
                 >
                     {/* Main title with capture effect */}
                     <motion.h1
@@ -130,8 +130,8 @@ export default function HeroSection() {
                         }}
                         transition={{ duration: 0.3 }}
                     >
-                        <span className="text-foreground">Nest</span>
-                        <span className="text-primary">Link</span>
+                        <span className="text-primary">Nest</span>
+                        <span className="text-foreground">Link</span>
                     </motion.h1>
 
                     <motion.h1
@@ -139,15 +139,15 @@ export default function HeroSection() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
                         viewport={{ once: false }}
-                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mt-4"
+                        className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight"
                         animate={{
                             filter: isCaptured ? 'grayscale(0.2) brightness(0.95)' : 'grayscale(0) brightness(1)'
                         }}
 
                     >
-                        <span className="block">Organisations built inside</span>
+                        <span className="block">Organisations built</span>
                         <span className="block text-primary">
-                            for the <span className="italic font-extralight">Perfect</span> 3D future
+                            for the <span className="italic font-extralight font-[cursive]">Perfect</span> 3D future
                         </span>
                     </motion.h1>
 
@@ -251,7 +251,7 @@ export default function HeroSection() {
                     {/* ===== MAIN GLOBE WITH MARKERS ===== */}
                     <motion.div
                         style={{ rotate: globeRotate }}
-                        className="relative z-10 mb-8"
+                        className="relative "
                         animate={{
                             scale: isCaptured ? 0.9 : 1,
                             filter: isCaptured ? 'sepia(0.2) brightness(0.85)' : 'none'
@@ -383,7 +383,7 @@ export default function HeroSection() {
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="relative z-20 w-full max-w-2xl mt-8"
+                        className="relative w-full max-w-2xl"
                         animate={{
                             scale: isCaptured ? 0.92 : 1,
                             opacity: isCaptured ? 0.85 : 1

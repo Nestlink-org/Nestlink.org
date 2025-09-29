@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
+import TypingEffect from './TypingEffect';
 
 export default function HeroSection() {
     const { theme } = useTheme();
@@ -147,8 +148,17 @@ export default function HeroSection() {
                     >
                         <span className="block">Organisations built</span>
                         <span className="block text-primary">
-                            for the <span className="italic font-extralight font-[cursive]">Perfect</span> 3D future
+                            for the{" "}
+                            <span className="italic font-extralight font-[cursive]">
+                                <TypingEffect
+                                    texts={["Perfect 3D Future", "Innovative Designs", "Next-Gen Tech", "Sustainable Solutions"]}
+                                    typingDelay={100}
+                                    deletingDelay={50}
+                                    pauseDelay={1500}
+                                />
+                            </span>
                         </span>
+
                     </motion.h1>
 
                     <motion.p

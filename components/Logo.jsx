@@ -11,7 +11,7 @@ export default function Logo() {
     const linkColor = theme === 'light' ? 'text-black' : 'text-white';
 
     return (
-        <Link href="/home">
+        <Link href="/home" aria-label="NestLink Home">
             <motion.div
                 initial={{ scale: 0, rotate: -180 }}
                 animate={{ scale: 1, rotate: 0 }}
@@ -21,10 +21,10 @@ export default function Logo() {
                 className="relative flex items-center cursor-pointer"
             >
                 {/* NestLink Text */}
-                <h1 className="text-2xl font-bold relative z-10">
+                <span className="text-2xl font-bold relative z-10 leading-none">
                     <span className="text-[#38b6ff]">Nest</span>
                     <span className={linkColor}>Link</span>
-                </h1>
+                </span>
 
                 {/* Stars above N */}
                 <div className="absolute -top-5 left-0 flex flex-col items-center">

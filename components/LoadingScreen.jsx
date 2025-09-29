@@ -57,11 +57,7 @@ const SpaceObject = ({ position, scale }) => {
   return (
     <mesh ref={meshRef} position={position} scale={scale}>
       <octahedronGeometry args={[1, 0]} />
-      <meshBasicMaterial
-        color="#ffffff"
-        transparent
-        opacity={0.6}
-      />
+      <meshBasicMaterial color="#ffffff" transparent opacity={0.6} />
     </mesh>
   );
 };
@@ -98,10 +94,9 @@ const LoadingScreen = ({ onComplete }) => {
     <div className="relative w-full h-screen bg-black">
       {/* Enhanced 3D Scene with Bright Stars */}
       <Canvas>
-        {/* Bright starfield */}
         <BrightStars />
 
-        {/* Enhanced lighting for brightness */}
+        {/* Lighting */}
         <ambientLight intensity={0.6} />
         <pointLight position={[10, 10, 10]} intensity={1.2} color="#ffffff" />
         <pointLight position={[-10, -10, 10]} intensity={0.8} color="#a5b4fc" />
@@ -129,15 +124,14 @@ const LoadingScreen = ({ onComplete }) => {
           animate={{
             scale: [1, 1.15, 1],
             y: [0, -8, 0],
-            rotateZ: [0, 1, -1, 0]
+            rotateZ: [0, 1, -1, 0],
           }}
           transition={{
             repeat: Infinity,
             duration: 8,
-            ease: "easeInOut"
+            ease: "easeInOut",
           }}
         >
-          {/* Glow effect */}
           <div className="absolute inset-0 bg-blue-400/20 blur-2xl rounded-full scale-125" />
           <Logo />
         </motion.div>
@@ -146,10 +140,11 @@ const LoadingScreen = ({ onComplete }) => {
         <div className="relative">
           <div className="text-2xl font-bold text-white drop-shadow-[0_0_10px_rgba(96,165,250,0.5)]">
             <TypingEffect
-              text="Initializing immersive experience...hold tight"
+              texts={["Initializing immersive experience...hold tight"]}
+              typingDelay={60}
+              loop={false}
               onTypingComplete={() => setTypingComplete(true)}
             />
-            <span className="animate-pulse text-blue-300 ml-1">|</span>
           </div>
         </div>
 
@@ -160,7 +155,6 @@ const LoadingScreen = ({ onComplete }) => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
-            {/* Progress bar with glow */}
             <div className="relative">
               <div className="h-3 bg-gray-900/80 rounded-full overflow-hidden border border-blue-500/30">
                 <motion.div
@@ -169,15 +163,12 @@ const LoadingScreen = ({ onComplete }) => {
                   animate={{ width: `${progress}%` }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Shimmer effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent animate-pulse" />
                 </motion.div>
               </div>
-              {/* Outer glow */}
               <div className="absolute inset-0 bg-blue-400/10 blur-md -z-10" />
             </div>
 
-            {/* Percentage with glow */}
             <div className="text-blue-200 font-semibold text-lg drop-shadow-[0_0_8px_rgba(96,165,250,0.6)]">
               {progress}%
             </div>
@@ -185,7 +176,7 @@ const LoadingScreen = ({ onComplete }) => {
         )}
       </div>
 
-      {/* Additional CSS for extra brightness */}
+      {/* Extra CSS */}
       <style jsx>{`
         .relative {
           position: relative;

@@ -149,7 +149,7 @@ export default function HeroSection() {
                         <span className="block">Organisations built</span>
                         <span className="block text-primary">
                             for the{" "}
-                            <span className="italic font-extralight font-[cursive]">
+                            <span className=" font-extralight font-[cursive]">
                                 <TypingEffect
                                     texts={["Perfect 3D Future", "Innovative Designs", "Next-Gen Tech", "Sustainable Solutions"]}
                                     typingDelay={100}

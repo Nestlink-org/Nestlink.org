@@ -72,8 +72,16 @@ export default function HeroSection() {
         { x: 130, y: 180 }, { x: 170, y: 190 }, { x: 210, y: 200 },
         { x: 250, y: 190 }, { x: 290, y: 180 }, { x: 140, y: 220 },
         { x: 180, y: 230 }, { x: 220, y: 240 }, { x: 260, y: 230 },
-        { x: 300, y: 220 }, { x: 110, y: 140 }, { x: 300, y: 140 }
+        { x: 300, y: 220 }, { x: 110, y: 140 }, { x: 300, y: 140 },
+        { x: 100, y: 100 }, { x: 320, y: 100 }, { x: 340, y: 120 },
+        { x: 90, y: 160 }, { x: 330, y: 160 }, { x: 350, y: 180 },
+        { x: 80, y: 200 }, { x: 340, y: 200 }, { x: 360, y: 220 },
+        { x: 70, y: 240 }, { x: 320, y: 260 }, { x: 360, y: 260 },
+        { x: 120, y: 260 }, { x: 200, y: 280 }, { x: 280, y: 260 },
+        { x: 160, y: 300 }, { x: 240, y: 320 }, { x: 300, y: 300 },
+        { x: 180, y: 340 }, { x: 260, y: 360 }
     ];
+
 
     return (
         <motion.section
@@ -146,7 +154,7 @@ export default function HeroSection() {
                         }}
 
                     >
-                        <span className="block">Organisations buil for</span>
+                        <span className="block">Organisations built for</span>
 
                         <span className="text-primary italic font-extralight font-[cursive]">
                             <TypingEffect
@@ -223,7 +231,23 @@ export default function HeroSection() {
                             <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/10 text-blue-400">✓</span>
                             <span>Performance & accessibility focused</span>
                         </li>
+
+                        <li className="flex items-center gap-2">
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-500/10 text-purple-400">✓</span>
+                            <span>Seamless integration with modern tools</span>
+                        </li>
+
+                        <li className="flex items-center gap-2">
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/10 text-yellow-400">✓</span>
+                            <span>Optimized for speed and reliability</span>
+                        </li>
+
+                        <li className="flex items-center gap-2">
+                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pink-500/10 text-pink-400">✓</span>
+                            <span>User-centric design & experience</span>
+                        </li>
                     </motion.ul>
+
                 </motion.div>
 
                 {/* ===== RIGHT 3D SECTION ===== */}
@@ -241,8 +265,8 @@ export default function HeroSection() {
                             className="absolute inset-0"
                             style={{
                                 backgroundImage: `
-                                    linear-gradient(#38b6ff 1px, transparent 1px),
-                                    linear-gradient(90deg, #38b6ff 1px, transparent 1px)
+                                    linear-gradient(#38b6ff 2px, transparent 2px),
+                                    linear-gradient(90deg, #38b6ff 2px, transparent 2px)
                                 `,
                                 backgroundSize: '50px 50px',
                             }}
@@ -250,7 +274,7 @@ export default function HeroSection() {
                                 backgroundPosition: isCaptured ? '0px 0px' : ['0px 0px', '50px 50px']
                             }}
                             transition={{
-                                duration: isCaptured ? 0 : 20,
+                                duration: isCaptured ? 0 : 10,
                                 repeat: isCaptured ? 0 : Infinity,
                                 ease: "linear"
                             }}
@@ -342,7 +366,7 @@ export default function HeroSection() {
                                     <motion.text
                                         x={marker.x + 6}
                                         y={marker.y + 3}
-                                        fontSize="7"
+                                        fontSize="8"
                                         fill="#38b6ff"
                                         fontFamily="Arial, sans-serif"
                                         fontWeight="bold"
@@ -368,7 +392,7 @@ export default function HeroSection() {
                         {[...Array(3)].map((_, i) => (
                             <motion.div
                                 key={`cube-${i}`}
-                                className="absolute w-4 h-4 border border-primary/50"
+                                className="absolute w-4 h-4 border border-primary"
                                 style={{
                                     top: `${30 + i * 40}%`,
                                     left: `${20 + i * 20}%`,
@@ -406,7 +430,7 @@ export default function HeroSection() {
                                     <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
                                         <span className="text-lg">🌍</span>
                                     </div>
-                                    <h3 className="text-lg font-bold text-foreground">Global 3D Infrastructure</h3>
+                                    <h3 className="text-lg font-bold text-foreground">3D Infrastructure</h3>
                                 </div>
                                 <p className="text-muted-foreground leading-relaxed text-sm">
                                     Our 3D-inspired frameworks are not just visuals — they are immersive

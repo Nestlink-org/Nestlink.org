@@ -146,18 +146,17 @@ export default function HeroSection() {
                         }}
 
                     >
-                        <span className="block">Organisations built</span>
-                        <span className="block text-primary">
-                            for the{" "}
-                            <span className=" font-extralight font-[cursive]">
-                                <TypingEffect
-                                    texts={["Perfect 3D Future", "Innovative Designs", "Next-Gen Tech", "Sustainable Solutions"]}
-                                    typingDelay={100}
-                                    deletingDelay={50}
-                                    pauseDelay={1500}
-                                />
-                            </span>
+                        <span className="block">Organisations buil for</span>
+
+                        <span className="text-primary italic font-extralight font-[cursive]">
+                            <TypingEffect
+                                texts={["Perfect 3D Future", "Innovative Designs", "Next-Gen Tech", "Sustainable Solutions", "Your Betterment"]}
+                                typingDelay={100}
+                                deletingDelay={50}
+                                pauseDelay={1500}
+                            />
                         </span>
+
 
                     </motion.h1>
 

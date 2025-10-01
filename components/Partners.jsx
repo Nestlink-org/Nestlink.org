@@ -53,6 +53,7 @@ export default function Partners() {
                         ref={containerRef}
                         className="flex"
                         animate={{ x: [0, -contentWidth] }}
+                        whileHover={{ x: 0 }}
                         transition={{
                             x: {
                                 repeat: Infinity,

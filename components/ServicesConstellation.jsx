@@ -137,11 +137,11 @@ export default function ServicesConstellation() {
                 tl.fromTo(card,
                     {
                         y: "100%",
-                        opacity: 0,
+                        opacity: 100,
                     },
                     {
                         y: "0%",
-                        opacity: 1,
+                        opacity: 100,
                         duration: 1,
                         ease: "power2.out",
                     },

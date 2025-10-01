@@ -42,7 +42,7 @@ const Header = () => {
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${poppins.variable} font-sans
        ${isScrolled
-                    ? 'backdrop-blur-md py-3  dark:bg-black  '
+                    ? 'backdrop-blur-md py-3 bg-[#9bd1ef] dark:bg-black  '
                     : ' bg-[lightblue] dark:bg-black  py-3'
                 }
       `}

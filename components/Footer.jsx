@@ -105,9 +105,10 @@ export default function Footer() {
                     transition={{ duration: 0.8, delay: 0.3 }}
                 >
                     <h3 className="text-xl font-semibold text-blue-300 mb-4">Subscribe</h3>
-                    <p className="text-text-secondary mb-4 p-4">
-                        Stay updated with the latest innovations and services from <Logo />
-                    </p>
+                    <div>
+
+
+                    </div>
                     <div className="flex flex-col sm:flex-row gap-2">
                         <input
                             type="email"

@@ -7,9 +7,10 @@ import { useTheme } from 'next-themes';
 import { usePathname } from 'next/navigation';
 import Logo from './Logo';
 import { Button } from '@/components/ui/button';
-import { Switch } from '@/components/ui/switch';
 import { Sun, Moon } from 'lucide-react';
 import { Poppins } from 'next/font/google';
+import { X } from 'lucide-react';
+import { Menu } from 'lucide-react';
 
 const poppins = Poppins({
     subsets: ['latin'],
@@ -40,16 +41,16 @@ const Header = () => {
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${poppins.variable} font-sans
+            className={`fixed top-0 left-0 h-20 right-0 z-50 transition-all duration-200 ${poppins.variable} font-sans  border-b border-white/40
        ${isScrolled
-                    ? 'backdrop-blur-md py-3 bg-[#9bd1ef] dark:bg-black  '
-                    : ' bg-[lightblue] dark:bg-black  py-3'
+                    ? 'backdrop-blur-md  bg-[#9bd1ef] dark:bg-black  '
+                    : ' bg-[lightblue] dark:bg-black  '
                 }
       `}
         >
-            <div className="container mx-auto px-6 flex items-center justify-between">
+            <div className="container mx-auto px-6 flex items-center justify-between h-full ">
                 {/* Logo */}
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center">
                     <Logo />
                 </div>
 
@@ -93,19 +94,39 @@ const Header = () => {
 
                 {/* Theme Toggle + Contact + Hamburger */}
                 <div className="flex items-center space-x-4">
-                    {mounted && (
-                        <div className="flex items-center space-x-2">
-                            <Sun className="w-5 h-5 text-sky-400 dark:text-sky-500 transition-colors duration-150" />
-                            <Switch
-                                checked={theme === 'dark'}
-                                onCheckedChange={(checked) => setTheme(checked ? 'dark' : 'light')}
-                            />
-                            <Moon className="w-5 h-5 text-blue-400 dark:text-blue-300 transition-colors duration-150" />
-                        </div>
-                    )}
+                                     {mounted && (
+                <div className="flex items-center gap-4 border border-gray-600/50 px-2 py-2 rounded-xl">
+                    {/* Sun Icon */}
+                    <button
+                    onClick={() => setTheme("light")}
+                    className={`transition-colors duration-200 ${
+                        theme === "light"
+                        ? "text-yellow-400"
+                        : "text-gray-400 hover:text-yellow-400"
+                    }`}
+                    aria-label="Activate light mode"
+                    >
+                    <Sun className="w-5 h-5" />
+                    </button>
 
-                    <Link href="/contact" className="hidden md:block">
-                        <Button variant="outline">{'Contact Us'}</Button>
+                    {/* Moon Icon */}
+                    <button
+                    onClick={() => setTheme("dark")}
+                    className={`transition-colors duration-200 ${
+                        theme === "dark"
+                        ? "text-blue-400"
+                        : "text-primary hover:text-blue-400"
+                    }`}
+                    aria-label="Activate dark mode"
+                    >
+                    <Moon className="w-5 h-5" />
+                    </button>
+                </div>
+                )}
+
+
+                    <Link href="/contact" className="hidden md:block ">
+                        <Button variant="outline" className={"rounded-none border border-gray-500/50 bg-transparent hover:border-gray-50/50"}>{'Contact Us'}</Button>
                     </Link>
 
                     <button
@@ -113,7 +134,7 @@ const Header = () => {
                         className="md:hidden text-foreground text-3xl"
                         aria-label="Toggle menu"
                     >
-                        {menuOpen ? '✖' : '☰'}
+                        {menuOpen ? <X/> : <Menu/>}
                     </button>
                 </div>
             </div>

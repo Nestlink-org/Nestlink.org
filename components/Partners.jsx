@@ -9,20 +9,52 @@ import { Playfair_Display } from 'next/font/google';
 const playfair = Playfair_Display({ subsets: ['latin'], weight: ['700'] });
 
 const partners = [
-    { name: 'Vercel', logo: 'https://assets.vercel.com/image/upload/front/favicon/vercel/180x180.png' },
-    { name: 'Next.js', logo: 'https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png' },
-    { name: 'React', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg' },
-    { name: 'JavaScript', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Unofficial_JavaScript_logo_2.svg' },
-    { name: 'Tailwind CSS', logo: 'https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg' },
-    { name: 'GitHub', logo: 'https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png' },
-    { name: 'FastAPI', logo: 'https://fastapi.tiangolo.com/img/logo-margin/logo-teal.png' },
-    { name: 'Kali Linux', logo: 'https://www.kali.org/images/kali-logo.svg' },
-    { name: 'Oracle', logo: 'https://logos-world.net/wp-content/uploads/2020/09/Oracle-Logo.png' },
-    { name: 'ChatGPT', logo: 'https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg' },
-    { name: 'Microsoft', logo: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg' },
-    { name: 'Google', logo: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg' },
-    { name: 'DeepSeek', logo: 'https://www.deepseek.com/favicon.ico' },
-    { name: 'Amazon', logo: 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg' },
+   
+      {
+        "name": "Next.js",
+        "logo": "https://assets.vercel.com/image/upload/v1662130559/nextjs/Icon_light_background.png"
+    },
+    {
+        "name": "Tailwind CSS",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg"
+    },
+    {
+        "name": "Contentful (Headless CMS)",
+        "logo": "https://avatars.githubusercontent.com/u/472182?s=200&v=4"
+    },
+    {
+        "name": "FastAPI",
+        "logo": "https://avatars.githubusercontent.com/u/156354296?s=48&v=4"
+    },
+    {
+        "name": "PostgreSQL",
+        "logo": "https://www.postgresql.org/media/img/about/press/elephant.png"
+    },
+     {
+        "name": "NodeJS",
+        "logo": "https://avatars.githubusercontent.com/u/9950313?s=48&v=4"
+    }, {
+        "name": "MongoDB",
+        "logo": "https://www.ortussolutions.com/__media/contentbox:2023/products/MongoDB/MongoDB.svg"
+    },   
+
+    {
+        "name": "Microsoft Azure",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Microsoft_Azure.svg/120px-Microsoft_Azure.svg.png"
+    },
+    {
+        "name": "Docker",
+        "logo": "https://www.stackhero.io/assets/src/images/servicesLogos/docker.svg?012c8713"
+    },
+    {
+        "name": "Kubernetes (K8s)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/39/Kubernetes_logo_without_workmark.svg/617px-Kubernetes_logo_without_workmark.svg.png?20190926210707"
+    },
+
+    {
+        "name": "LangGraph",
+        "logo": "https://miro.medium.com/v2/resize:fit:720/format:webp/1*9HFsjXjgw6oG2HwQ3Okgwg.png"
+    }
 ];
 
 export default function Partners() {
@@ -45,7 +77,7 @@ export default function Partners() {
                 <h2
                     className={`${playfair.className} text-3xl md:text-4xl font-bold text-center text-foreground dark:text-foreground-dark mb-12`}
                 >
-                    Our Trusted Partners
+                    Powering your idea with Cutting-Edge Technologies
                 </h2>
 
                 <div className="relative w-full overflow-hidden">
@@ -58,7 +90,7 @@ export default function Partners() {
                             x: {
                                 repeat: Infinity,
                                 repeatType: 'loop',
-                                duration: 15, // speed = 10s
+                                duration: 45,
                                 ease: 'linear',
                             },
                         }}
@@ -68,7 +100,7 @@ export default function Partners() {
                                 key={index}
                                 className="flex-shrink-0 mx-6 w-32 flex flex-col items-center justify-center"
                             >
-                                <Card className="mb-3 flex items-center justify-center h-20 w-20 p-4">
+                                <Card className="mb-3 flex items-center justify-center h-20 w-20 p-4 border border-gray-500/50">
                                     <img
                                         src={partner.logo}
                                         alt={partner.name}

@@ -7,7 +7,7 @@ import { useState } from 'react';
 const pricingTiers = [
     {
         title: 'Starter Solutions',
-        price: '$20k - $75k',
+        price: 'Ksh. 20k - Ksh. 75k',
         description: 'Perfect for startups and small businesses looking to establish their digital presence with essential features.',
         timeline: '3-6 month timeline',
         icon: '🚀',
@@ -26,7 +26,7 @@ const pricingTiers = [
     },
     {
         title: 'Growth Solutions',
-        price: '$75k - $250k',
+        price: 'Ksh. 75k - Ksh. 250k',
         description: 'Comprehensive solutions for growing businesses ready to scale with advanced functionality and integrations.',
         timeline: '6-12 month timeline',
         icon: '📈',
@@ -46,7 +46,7 @@ const pricingTiers = [
     },
     {
         title: 'Enterprise Solutions',
-        price: '$250k +',
+        price: 'Ksh. 250k +',
         description: 'End-to-end digital transformation for large organizations requiring complex systems and strategic guidance.',
         timeline: '12+ month timeline',
         icon: '🏢',
@@ -125,7 +125,7 @@ export default function Pricing() {
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.8, delay: index * 0.2 }}
                             whileHover={{ y: -10, transition: { duration: 0.3 } }}
-                            className={`relative rounded-2xl p-8 shadow-xl backdrop-blur-sm flex flex-col h-full ${tier.popular
+                            className={`relative rounded-2xl p-8 shadow-xl backdrop-blur-sm flex flex-col h-full Ksh. {tier.popular
                                 ? 'bg-gradient-to-br from-purple-500/10 to-blue-500/10 border-2 border-purple-500/30 scale-105 z-10'
                                 : 'bg-gradient-to-br from-white/5 to-white/2 border border-white/5'
                                 }`}
@@ -160,7 +160,7 @@ export default function Pricing() {
                             <h3 className="text-2xl font-bold text-gray-900 dark:text-white text-center mb-2">
                                 {tier.title}
                             </h3>
-                            <div className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 text-center mb-4">
+                            <div className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-blue-500 text-center mb-4">
                                 {tier.price}
                             </div>
                             <p className="text-gray-700 dark:text-gray-300 text-center mb-6">
@@ -202,7 +202,7 @@ export default function Pricing() {
                                 transition={{ duration: 0.5, delay: index * 0.1 + 0.5 }}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-all ${tier.popular
+                                className={`w-full py-3 px-6 rounded-lg font-semibold text-center transition-all Ksh. {tier.popular
                                     ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-lg hover:shadow-xl'
                                     : 'bg-white/10 dark:bg-gray-800/50 text-gray-700 dark:text-gray-300 hover:bg-white/20 dark:hover:bg-gray-700/50'
                                     }`}

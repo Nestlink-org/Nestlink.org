@@ -92,7 +92,7 @@ export default function HeroSection() {
                 opacity,
                 borderRadius
             }}
-            className="w-full min-h-screen flex items-center relative overflow-hidden bg-background transition-all duration-300"
+            className="w-full  min-h-screen flex items-center relative overflow-hidden bg-background transition-all duration-300 border border-white/40"
         >
             {/* ===== CAPTURE OVERLAY EFFECTS ===== */}
 
@@ -121,7 +121,7 @@ export default function HeroSection() {
             />
 
             {/* ===== MAIN CONTENT ===== */}
-            <div className="flex flex-col lg:flex-row items-center justify-between w-full relative z-20">
+            <div className="flex flex-col lg:flex-row items-center justify-between gap-3 w-[80%] mx-auto relative z-20  ">
 
                 {/* ===== LEFT TEXT SECTION ===== */}
                 <motion.div
@@ -129,19 +129,8 @@ export default function HeroSection() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ duration: 0.3 }}
-                    className="font-[ClashDisplay] w-full lg:ml-20 lg:w-[60%] lg:mt-0 mt-20"
+                    className="font-[ClashDisplay] w-full lg:w-[60%] lg:-mt-20 mt-20 "
                 >
-                    {/* Main title with capture effect */}
-                    <motion.h1
-                        className="text-5xl font-bold relative z-10 tracking-tight"
-                        animate={{
-                            filter: isCaptured ? 'grayscale(0.3) brightness(0.9)' : 'grayscale(0) brightness(1)'
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <span className="text-primary">Nest</span>
-                        <span className="text-foreground">Link</span>
-                    </motion.h1>
 
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
@@ -154,9 +143,9 @@ export default function HeroSection() {
                         }}
 
                     >
-                        <span className="block">Organisations built for</span>
+                        <span className="block">Building Intelligent Software for a Smarter Future</span>
 
-                        <span className="text-primary italic font-extralight font-[cursive]">
+                        <span className="text-primary italic text-2xl md:text-3xl lg:text-4xl font-extralight font-[cursive]">
                             <TypingEffect
                                 texts={["Perfect 3D Future", "Innovative Designs", "Next-Gen Tech", "Sustainable Solutions", "Your Betterment"]}
                                 typingDelay={100}
@@ -179,74 +168,35 @@ export default function HeroSection() {
                         }}
 
                     >
-                        We create immersive, interactive web experiences — 3D visualizations,
-                        cloud expansions, and AI-driven tools that scale. Elevate your brand
-                        with motion, depth and measurable results.
+                     Turn your vision into scalable, high-performance software built to drive efficiency, innovation, and long-term success in a smart world with NestLink.
                     </motion.p>
 
                     {/* Buttons with capture scaling */}
                     <motion.div
-                        className="mt-8 flex flex-wrap items-center gap-4"
+                        className="mt-8 gap-4 w-3/4 grid sm:grid-cols-2 grid-cols-1"
                         animate={{
                             scale: isCaptured ? 0.95 : 1
                         }}
                         transition={{ duration: 0.3 }}
                     >
-                        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                            <Link href="/projects">
-                                <Button size="lg" className="gap-2">
+                        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className='w-full'>
+                            <Link href="/projects" className='w-full'>
+                                <Button size="lg" className="rounded-none w-full">
                                     Explore Our Work →
                                 </Button>
                             </Link>
                         </motion.div>
 
-                        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }}>
-                            <Link href="/pricing">
-                                <Button size="lg" variant="outline" className="gap-2">
+                        <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.96 }} className='w-full'>
+                            <Link href="/pricing" className='w-full'>
+                                <Button size="lg" variant="outline" className="rounded-none w-full">
                                     Talk to Sales
                                 </Button>
                             </Link>
                         </motion.div>
                     </motion.div>
 
-                    {/* Feature list */}
-                    <motion.ul
-                        className="mt-6 flex flex-wrap gap-6 text-muted-foreground text-base"
-                        animate={{
-                            opacity: isCaptured ? 0.8 : 1
-                        }}
-                        transition={{ duration: 0.3 }}
-                    >
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-600/10 text-green-400">✓</span>
-                            <span>Tailored 3D & AI-driven solutions</span>
-                        </li>
-
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-green-600/10 text-green-400">✓</span>
-                            <span>Scalable cloud-ready platforms</span>
-                        </li>
-
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-blue-500/10 text-blue-400">✓</span>
-                            <span>Performance & accessibility focused</span>
-                        </li>
-
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-purple-500/10 text-purple-400">✓</span>
-                            <span>Seamless integration with modern tools</span>
-                        </li>
-
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-yellow-500/10 text-yellow-400">✓</span>
-                            <span>Optimized for speed and reliability</span>
-                        </li>
-
-                        <li className="flex items-center gap-2">
-                            <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-pink-500/10 text-pink-400">✓</span>
-                            <span>User-centric design & experience</span>
-                        </li>
-                    </motion.ul>
+                    
 
                 </motion.div>
 
@@ -427,31 +377,22 @@ export default function HeroSection() {
                             {/* Left info card */}
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center bg-primary">
                                         <span className="text-lg">🌍</span>
                                     </div>
                                     <h3 className="text-lg font-bold text-foreground">3D Infrastructure</h3>
                                 </div>
                                 <p className="text-muted-foreground leading-relaxed text-sm">
-                                    Our 3D-inspired frameworks are not just visuals — they are immersive
+                                    Our 3D-inspired frameworks are not just visuals, they are immersive
                                     experiences, engineered to captivate and connect across all devices.
                                 </p>
-                                <div className="flex gap-2 mt-2">
-                                    {['⚡', '🔗', '🎯'].map((icon, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="w-6 h-6 bg-blue-500/20 rounded flex items-center justify-center text-xs"
-                                        >
-                                            {icon}
-                                        </div>
-                                    ))}
-                                </div>
+                              
                             </div>
 
                             {/* Right info card */}
                             <div className="space-y-3">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-primary/20 rounded-lg flex items-center justify-center bg-primary">
                                         <span className="text-lg">🚀</span>
                                     </div>
                                     <h3 className="text-lg font-bold text-foreground">Interactive Future Ready</h3>
@@ -460,16 +401,7 @@ export default function HeroSection() {
                                     The future is interactive, and NestLink is building the wireframes
                                     that carry ideas across borders, industries, and imaginations.
                                 </p>
-                                <div className="flex gap-2 mt-2">
-                                    {['🤖', '☁️', '✨'].map((icon, idx) => (
-                                        <div
-                                            key={idx}
-                                            className="w-6 h-6 bg-purple-500/20 rounded flex items-center justify-center text-xs"
-                                        >
-                                            {icon}
-                                        </div>
-                                    ))}
-                                </div>
+                               
                             </div>
                         </div>
                     </motion.div>

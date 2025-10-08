@@ -14,10 +14,10 @@ import CyberpunkScrollSections from '@/components/Cyberpunk';
 
 export default function HomePage() {
     return (
-        <div className="min-h-screen bg-gradient-to-br from-background-primary to-background-secondary text-text-primary">
+        <div className="min-h-screen bg-gradient-to-br from-background-primary to-background-secondary text-text-primary ">
             <Header />
 
-            <main className="relative overflow-hidden">
+            <main className="relative overflow-hidden ">
                 <HeroSection />
                 <Partners />
                 <ServicesConstellation />

@@ -1,15 +1,13 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import Footer from "@/components/Footer";
+import { Toaster } from 'react-hot-toast';
 
-// ✅ Load Inter font
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
 });
 
-// ✅ Metadata is automatically injected in App Router
 export const metadata = {
   title: "Nestlink.org",
   description: "Cutting-edge digital solutions",
@@ -23,8 +21,8 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning className={inter.variable}>
       <body className="antialiased">
         <ThemeProvider>{children}</ThemeProvider>
-        <Footer />
+    <Toaster position="top-right" reverseOrder={false} />
       </body>
-    </html>
+    </html> 
   );
 }

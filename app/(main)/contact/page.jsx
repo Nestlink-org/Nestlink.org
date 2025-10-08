@@ -1,18 +1,25 @@
 'use client';
 
-import Header from '@/components/Header';
+import Header from '@/components/Header.jsx';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
+import { submitContactForm } from "@/lib/api";
+import toast from 'react-hot-toast';
+import { Loader } from 'lucide-react';
+
 
 export default function ContactPage() {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        company: '',
+        phone: '',
         subject: '',
         message: ''
     });
+    const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const handleChange = (e) => {
         setFormData({
@@ -21,23 +28,44 @@ export default function ContactPage() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // In a real application, you would send the form data to a backend
-        console.log('Form submitted:', formData);
-        setIsSubmitted(true);
+        setIsSubmitting(true);
+        setIsLoading(true)
 
-        // Reset form after 3 seconds
-        setTimeout(() => {
-            setIsSubmitted(false);
-            setFormData({
-                name: '',
-                email: '',
-                company: '',
-                subject: '',
-                message: ''
-            });
-        }, 3000);
+
+        try {
+            const result = await submitContactForm(formData);
+
+            if (result.ok) {
+                setIsSubmitted(true);
+                toast.success(
+                    "Message sent successfully! We'll contact you within 24 hours."
+                );
+                setFormData({
+
+                    name: "",
+                    email: "",
+                    phone: "",
+                    subject: "",
+                    message: "",
+
+                });
+                setIsLoading(false)
+                setTimeout(() => {
+                    setIsSubmitted(false)
+                }, 3000);
+            } else {
+                throw new Error(result.error || "Failed to send message");
+                setIsLoading(false)
+            }
+        } catch (error) {
+            console.error("Form submission error:", error);
+            toast.error(error.message || "Failed to send message. Please try again.");
+            setIsLoading(false)
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     const contactMethods = [
@@ -49,7 +77,7 @@ export default function ContactPage() {
             ),
             title: "Phone",
             description: "Speak directly with our team",
-            details: "+254-757-161-754, +254-796-218-073, +254-793-867-001",
+            details: "+254-757-161-754",
             action: "Call now",
             link: "tel:+254757161754"
         },
@@ -78,18 +106,7 @@ export default function ContactPage() {
             action: "Get directions",
             link: "https://maps.google.com"
         },
-        {
-            icon: (
-                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                </svg>
-            ),
-            title: "Live Chat",
-            description: "Talk with us in real-time",
-            details: "Available Mon-Fri, 9am-5pm EST",
-            action: "Start chat",
-            link: "#chat"
-        }
+
     ];
 
     const faqs = [
@@ -233,7 +250,7 @@ export default function ContactPage() {
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true, amount: 0.5 }}
                             transition={{ duration: 0.8, delay: 0.2 }}
-                            className="bg-white/5 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
+                            className="bg-white/5 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl h-max lg:mt-16 p-8 border border-white/10"
                         >
                             <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Send us a message</h2>
 
@@ -254,7 +271,7 @@ export default function ContactPage() {
                                     </p>
                                 </motion.div>
                             ) : (
-                                <form onSubmit={handleSubmit} className="space-y-6">
+                                <form onSubmit={handleSubmit} className="space-y-6 ">
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
                                             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -290,17 +307,18 @@ export default function ContactPage() {
 
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div>
-                                            <label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                                                Company
+                                            <label htmlFor="Phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                                Phone
                                             </label>
                                             <input
                                                 type="text"
-                                                id="company"
-                                                name="company"
-                                                value={formData.company}
+                                                id="phone"
+                                                name="phone"
+                                                value={formData.phone}
                                                 onChange={handleChange}
+                                                maxLength={10}
                                                 className="w-full px-4 py-3 bg-white/5 dark:bg-gray-800/50 border border-white/10 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
-                                                placeholder="Your company"
+                                                placeholder="07XX XXX XXX"
                                             />
                                         </div>
                                         <div>
@@ -345,9 +363,9 @@ export default function ContactPage() {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                         type="submit"
-                                        className="w-full py-4 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
+                                        className="w-full py-4 bg-gradient-to-r flex justify-center items-center from-purple-500 to-blue-500 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl transition-all cursor-pointer"
                                     >
-                                        Send Message
+                                        {isLoading ? <Loader className='animate-spin' /> : "Send Message"}
                                     </motion.button>
                                 </form>
                             )}

@@ -1,6 +1,6 @@
 'use client';
 
-import Header from '@/components/Header';
+import Header from '../../../components/Header.jsx';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 

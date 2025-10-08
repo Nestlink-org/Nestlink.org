@@ -21,7 +21,7 @@ export default function Logo() {
                 className="relative flex items-center cursor-pointer"
             >
                 {/* NestLink Text */}
-                <span className="text-2xl font-bold relative z-10 leading-none">
+                <span className="text-xl font-bold relative z-10 leading-none">
                     <span className="text-[#38b6ff]">Nest</span>
                     <span className={linkColor}>Link</span>
                 </span>
@@ -30,7 +30,7 @@ export default function Logo() {
                 <div className="absolute -top-5 left-0 flex flex-col items-center">
                     {/* Big star */}
                     <motion.svg
-                        className="w-4 h-4 text-[#38b6ff]"
+                        className="w-3 h-3 text-[#38b6ff]"
                         viewBox="0 0 24 24"
                         fill="currentColor"
                         animate={{ y: [0, -3, 0], rotate: [0, 20, 0], opacity: [1, 0.6, 1] }}

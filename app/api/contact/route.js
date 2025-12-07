@@ -81,12 +81,12 @@ export async function POST(req) {
     const info = await transporter.sendMail({
       from: `"Anira Insurance Agency" <${ZOHO_SMTP_USER}>`,
       to: ZOHO_TO_ADDRESS,
-      bcc: "melvinssimon@gmail.com",
       replyTo: email,
       subject2,
       html: htmlBody,
-      text: `Name: ${name}\nEmail: ${email}\nPhone: ${phone || "N/A"
-        }\n\nMessage:\n${message}`,
+      text: `Name: ${name}\nEmail: ${email}\nPhone: ${
+        phone || "N/A"
+      }\n\nMessage:\n${message}`,
     });
 
     return NextResponse.json({
